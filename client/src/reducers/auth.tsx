@@ -1,5 +1,4 @@
-
-import axios from 'axios';
+import axios from "axios";
 
 import {
   REGISTER_SUCCESS,
@@ -9,19 +8,22 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   LOGOUT,
-  ACCOUNT_DELETED
-} from '../actions/types';
+  ACCOUNT_DELETED,
+} from "../actions/types";
 
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem("token"),
   isAuthenticated: null,
   loading: true,
   user: null,
   userid: null,
-  usergames: null
+  usergames: null,
 };
 
-export default function authReducer(state = initialState, action: { type: string; payload: any; }) {
+export default function authReducer(
+  state = initialState,
+  action: { type: string; payload: any }
+) {
   const { type, payload } = action;
 
   switch (type) {
@@ -32,36 +34,36 @@ export default function authReducer(state = initialState, action: { type: string
         loading: false,
         user: payload.user,
         userid: payload.user.userid,
-        usergames: payload.user
-      }
+        usergames: payload.user,
+      };
     case REGISTER_SUCCESS:
-      localStorage.setItem('token', payload.token);
+      localStorage.setItem("token", payload.token);
       return {
         ...state,
         ...payload,
         isAuthenticated: true,
-        loading: false
+        loading: false,
       };
     case LOGIN_SUCCESS:
-      localStorage.setItem('token', payload.token);
+      localStorage.setItem("token", payload.token);
       return {
         ...state,
         ...payload,
         isAuthenticated: true,
-        loading: false
+        loading: false,
       };
     case REGISTER_FAIL:
     case LOGIN_FAIL:
     case AUTH_ERROR:
     case LOGOUT:
     case ACCOUNT_DELETED:
-      localStorage.removeItem('token');
-      axios.defaults.headers.common['userid'] = null;
+      localStorage.removeItem("token");
+      axios.defaults.headers.common["userid"] = "";
       return {
         ...state,
         token: null,
         isAuthenticated: false,
-        loading: false
+        loading: false,
       };
 
     default:

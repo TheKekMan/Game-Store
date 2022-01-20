@@ -14,6 +14,7 @@ import "./css/App.css";
 import "./css/Games.css";
 import "./css/Cart.css";
 import "./css/Search.css";
+import Spinner from "./components/layout/Spinner";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -26,7 +27,7 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Suspense fallback="loading">
+    <Suspense fallback={Spinner}>
       <Router>
         <Fragment>
           <Navbar />

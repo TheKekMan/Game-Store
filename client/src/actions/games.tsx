@@ -10,7 +10,7 @@ import axios from "axios";
 import { Dispatch } from "redux";
 import uuid from "uuid";
 
-// Get games?
+// Get games
 export const getGames = (query: any) => async (dispatch: Dispatch<any>) => {
   dispatch({ type: CLEAR_GAMES });
   dispatch({ type: CLEAR_GAME });
@@ -35,27 +35,28 @@ export const getGames = (query: any) => async (dispatch: Dispatch<any>) => {
   }
 };
 
-// Get a game by ID?
-export const getGameById = (gameId: uuid.V4Options) => async (dispatch: Dispatch<any>) => {
-  dispatch({ type: CLEAR_GAME });
-  dispatch({ type: CLEAR_DEV });
-  try {
-    const res = await axios.get(
-      `http://localhost:3000/gamestore/api/games/${gameId}`
-    );
-    dispatch({
-      type: GET_GAME,
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: GAMES_ERROR,
-      payload: { msg: "error" },
-    });
-  }
-};
+// Get game by ID
+export const getGameById =
+  (gameId: uuid.V4Options) => async (dispatch: Dispatch<any>) => {
+    dispatch({ type: CLEAR_GAME });
+    dispatch({ type: CLEAR_DEV });
+    try {
+      const res = await axios.get(
+        `http://localhost:3000/gamestore/api/games/${gameId}`
+      );
+      dispatch({
+        type: GET_GAME,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: GAMES_ERROR,
+        payload: { msg: "error" },
+      });
+    }
+  };
 
-// Get games by tag?
+// Get games by tag
 export const getGamesByTag =
   (gameTag: string) => async (dispatch: Dispatch<any>) => {
     dispatch({ type: CLEAR_GAMES });

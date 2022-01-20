@@ -4,9 +4,8 @@ import GameItem from "./GameItem";
 import Spinner from "../layout/Spinner";
 import { getGames } from "../../actions/games";
 import { RootState } from "../../reducers";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import { useTranslation } from "react-i18next";
+import { Pagination, Stack } from "../../mui";
 
 // custom search Hook
 const useSearch = (query: any) => {
@@ -38,8 +37,8 @@ const Games = (props: any) => {
     if (games.results.length !== 0)
       if (page === 1) {
         //games.results.rows = games.results.rows.slice(page - 1 * 8, page * 8);
-        setPageGames(games.results.rows.slice(0, page * 8))
-      } else setPageGames(games.results.rows.slice((page - 1) * 8, page * 8))
+        setPageGames(games.results.rows.slice(0, page * 8));
+      } else setPageGames(games.results.rows.slice((page - 1) * 8, page * 8));
   }, [games, page]);
 
   return games.loading ? (
