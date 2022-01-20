@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import AlertMUI from '@mui/material/Alert';
-
+import { AlertMUI } from "../../mui";
 
 const Alert = ({ alerts }: { alerts: any }) =>
   alerts !== null &&
@@ -12,11 +11,13 @@ const Alert = ({ alerts }: { alerts: any }) =>
       alertType: any;
       msg: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal;
     }) => (
-      <AlertMUI key={alert.id} variant="filled" severity={alert.alertType} className="alert" >
-      {/* <div key={alert.id} className={`alert alert-${alert.alertType}`}>
+      <AlertMUI
+        key={alert.id}
+        variant="filled"
+        severity={alert.alertType}
+        className="alert"
+      >
         {alert.msg}
-      </div> */}
-      {alert.msg}
       </AlertMUI>
     )
   );

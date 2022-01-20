@@ -85,6 +85,7 @@ export const checkout =
     }
   };
 
+// User Details
 export const getUserDetails = () => async (dispatch: Dispatch<any>) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);

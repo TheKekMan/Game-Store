@@ -4,9 +4,8 @@ import GameItem from "./GameItem";
 import Spinner from "../layout/Spinner";
 import { getGamesByTag } from "../../actions/games";
 import { RootState } from "../../reducers";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import { useTranslation } from "react-i18next";
+import { Pagination, Stack } from "../../mui";
 
 // custom search by tag Hook
 const useSearch = (tag: string) => {
@@ -38,41 +37,41 @@ const Games = (props: any) => {
     if (games.results.length !== 0)
       if (page === 1) {
         //games.results.rows = games.results.rows.slice(page - 1 * 8, page * 8);
-        setPageGames(games.results.rows.slice(0, page * 8))
-      } else setPageGames(games.results.rows.slice((page - 1) * 8, page * 8))
+        setPageGames(games.results.rows.slice(0, page * 8));
+      } else setPageGames(games.results.rows.slice((page - 1) * 8, page * 8));
   }, [games, page]);
 
   return games.loading ? (
     <Spinner />
-    ) : (
-      <Fragment>
-        {games.results.rows && games.results.rows.length > 0 ? (
-          <>
-            <div className="games-list">
-              {PageGames.map((game: { game_id: React.Key }) => (
-                <GameItem key={game.game_id} game={game} />
-              ))}
-            </div>
-            <div className="pagination">
-              <Stack spacing={2}>
-                <Pagination
-                  count={Math.ceil(games.results.rows.length / 8)}
-                  color="primary"
-                  size={width > 768 ? "large" : width < 420 ? "small" : "medium"}
-                  siblingCount={0}
-                  boundaryCount={1}
-                  page={page}
-                  onChange={(event, value) => setPage(value)}
-                />
-              </Stack>
-            </div>
-          </>
-        ) : (
-          // <h4>{games.error.msg}</h4>
-          <h4>{t("noGames")}</h4>
-        )}
-      </Fragment>
-    );
+  ) : (
+    <Fragment>
+      {games.results.rows && games.results.rows.length > 0 ? (
+        <>
+          <div className="games-list">
+            {PageGames.map((game: { game_id: React.Key }) => (
+              <GameItem key={game.game_id} game={game} />
+            ))}
+          </div>
+          <div className="pagination">
+            <Stack spacing={2}>
+              <Pagination
+                count={Math.ceil(games.results.rows.length / 8)}
+                color="primary"
+                size={width > 768 ? "large" : width < 420 ? "small" : "medium"}
+                siblingCount={0}
+                boundaryCount={1}
+                page={page}
+                onChange={(event, value) => setPage(value)}
+              />
+            </Stack>
+          </div>
+        </>
+      ) : (
+        // <h4>{games.error.msg}</h4>
+        <h4>{t("noGames")}</h4>
+      )}
+    </Fragment>
+  );
 };
 
 export default Games;

@@ -5,7 +5,7 @@ import { loadUser } from "./auth";
 import { Dispatch } from "redux";
 import uuid from "uuid";
 
-// Add a game to cart ?
+// Add game to cart
 export const addToCart =
   (
     gameid: uuid.V4Options,
@@ -26,7 +26,7 @@ export const addToCart =
     const body = JSON.stringify({ gameid, title, price, poster, userid });
     try {
       const res = await axios.post(
-        "http://localhost:3000/gamestore/api/user/addtocart",
+        "http://localhost:3000/gamestore/api/cart/addtocart",
         body,
         config
       );
@@ -57,37 +57,39 @@ export const addToCart =
     }
   };
 
-export const getFromCart = (userid: uuid.V4Options) => async (dispatch: Dispatch<any>) => {
-  if (userid) {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    axios.defaults.headers.common["userid"] = userid;
-    try {
-      const res = await axios.get(
-        "http://localhost:3000/gamestore/api/user/addtocart",
-        config
-      );
-      if (res.data.items.length !== 0) {
-        res.data.items.map((item: any) => {
-          dispatch({
-            type: CART_ADD,
-            payload: item,
+// Get game from cart
+export const getFromCart =
+  (userid: uuid.V4Options) => async (dispatch: Dispatch<any>) => {
+    if (userid) {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      axios.defaults.headers.common["userid"] = userid.toString();
+      try {
+        const res = await axios.get(
+          "http://localhost:3000/gamestore/api/cart/addtocart",
+          config
+        );
+        if (res.data.items.length !== 0) {
+          res.data.items.map((item: any) => {
+            dispatch({
+              type: CART_ADD,
+              payload: item,
+            });
           });
+        }
+      } catch (err) {
+        dispatch({
+          type: CART_ERROR,
+          payload: { msg: err, status: err },
         });
       }
-    } catch (err) {
-      dispatch({
-        type: CART_ERROR,
-        payload: { msg: err, status: err },
-      });
-    }
-  } else return;
-};
+    } else return;
+  };
 
-// Remove a game from cart ?
+// Remove game from cart
 export const removeFromCart =
   (gkeyid: uuid.V4Options) => async (dispatch: Dispatch<any>) => {
     const config = {
@@ -98,7 +100,7 @@ export const removeFromCart =
     const body = JSON.stringify({ gkeyid });
     try {
       const res = await axios.post(
-        "http://localhost:3000/gamestore/api/user/remfromcart",
+        "http://localhost:3000/gamestore/api/cart/remfromcart",
         body,
         config
       );
@@ -114,6 +116,7 @@ export const removeFromCart =
     }
   };
 
+//Buy game from cart
 export const buyFromCart =
   (gkeyid: uuid.V4Options) => async (dispatch: Dispatch<any>) => {
     const config = {
@@ -124,7 +127,7 @@ export const buyFromCart =
     const body = JSON.stringify({ gkeyid });
     try {
       const res = await axios.post(
-        "http://localhost:3000/gamestore/api/user/buyfromcart",
+        "http://localhost:3000/gamestore/api/cart/buyfromcart",
         body,
         config
       );
