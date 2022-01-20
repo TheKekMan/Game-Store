@@ -1,0 +1,62 @@
+.search-form * {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+.search-form input[type='search'] {
+  color: var(--light-basic);
+  border-bottom: 2px solid transparent;
+
+  transition: all ease 0.3s;
+}
+.search-form input[type='search']:focus {
+  border-bottom: 2px solid var(--primary-color);
+
+  transition: all ease 0.3s;
+}
+.search-form button[type='submit'] {
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+/* for responsive search - TODO ? */
+/* .search-form {
+  position: fixed;
+  background: #323232;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-100%);
+}
+.search-form input[type='search'],
+button.close {
+  margin-left: auto;
+  cursor: pointer;
+} */
+/* + remove display: block from navbar on 700 breakpoint */
+
+.search-form {
+  display: flex;
+}
+.search-form > input[type="search"] {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+@media (max-width: 500px) {
+  .search-form{
+    order: 3;
+    flex-wrap: nowrap;
+  }
+  .search-form > input[type="search"] {
+    max-width: 100%;
+  }
+}

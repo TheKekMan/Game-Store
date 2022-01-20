@@ -1,0 +1,7 @@
+node_modules
+.DS_Store
+dist
+.env
+credentials.csv
+test_data.sql
+__snapshots__

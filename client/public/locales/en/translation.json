@@ -1,0 +1,49 @@
+{
+    "cart": {
+      "total": "Total",
+      "code": "CODE"
+    },
+    "notFound": {
+        "title": "Page not found",
+        "description": "This page does not exist"
+    },
+    "search": "Search",
+    "noGames": "No games found",
+    "buttons": {
+        "login": "Login",
+        "register": "Register"
+    },
+    "login": {
+        "title": "Sign In",
+        "desc": "Log in to your account",
+        "email": "Email",
+        "password": "Password",
+        "noAccount": "Still don't have an account?"
+    },
+    "register": {
+        "title": "Sign Up",
+        "desc": "Create your account",
+        "email": "Email Address",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "haveAnAccount": "Already have an account?",
+        "button": "Sign In"
+    },
+    "game": {
+        "desc": "Description",
+        "date": "Release date",
+        "dev": "Developer",
+        "buttonReg": "Sign Up",
+        "button": "Add To Cart",
+        "history": "Price history",
+        "price": "Price",
+        "free": "FREE"
+    },
+    "validation": {
+        "required": "Required field",
+        "email": "Incorrect email address",
+        "min8": "At least 8 characters.",
+        "max20": "No more than 20 characters",
+        "dblPassword": "Password mismatch"
+    }
+  }
