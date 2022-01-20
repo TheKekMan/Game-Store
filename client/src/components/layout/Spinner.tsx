@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import spinner from "./Pulse-1s-200px.svg";
 
-export default () => {
+const Spinner = () => {
   return (
     <Fragment>
       <img
@@ -12,3 +12,5 @@ export default () => {
     </Fragment>
   );
 };
+
+export default Spinner;

@@ -16,6 +16,7 @@ import "./css/Cart.css";
 import "./css/Search.css";
 import Spinner from "./components/layout/Spinner";
 import Footer from "./components/layout/Footer";
+import { createTheme, ThemeProvider } from "./mui";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -27,18 +28,31 @@ const App = () => {
     dispatch(loadUser());
   }, [dispatch]);
 
+  const darkTheme = createTheme({
+    palette: {
+      primary: {
+        main: "#202020",
+      },
+      secondary: {
+        main: "#121212",
+      },
+    },
+  });
+
   return (
     <Suspense fallback={Spinner}>
       <Router>
-        <Fragment>
-          <Navbar />
-          <Cart />
-          <Switch>
-            {/* <Route exact path='/' component={Landing} /> */}
-            <Route component={Routes} />
-          </Switch>
-          <Footer />
-        </Fragment>
+        <ThemeProvider theme={darkTheme}>
+          <Fragment>
+            <Navbar />
+            <Cart />
+            <Switch>
+              {/* <Route exact path='/' component={Landing} /> */}
+              <Route component={Routes} />
+            </Switch>
+            <Footer />
+          </Fragment>
+        </ThemeProvider>
       </Router>
     </Suspense>
   );
