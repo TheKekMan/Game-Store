@@ -11,4 +11,4 @@ PERN
 
 <h2>Technology:</h2>
 
-Material UI, Redux thunk, i18next, Axios, EsLint, Prettier, Formik, Yup, Moment.js, Jest, Enzyme
+Material UI, TypeScript, Redux thunk, i18next, Axios, EsLint, Prettier, Formik, Yup, Moment.js, Jest, Enzyme
