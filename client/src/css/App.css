@@ -2,7 +2,7 @@
 :root {
   /* --primary-color: #17a2b8; */
   --primary-color: #0078f2;
-  --dark-color: #1c1c1c;
+  --dark-color: #121212;
   --light-gray: #2a2a2a;
   --light-color: #f5f5f5;
   --light-basic: #cccccc;
@@ -472,9 +472,9 @@ button {
   content: "*";
 }
 
-nav li{
+nav li {
   display: flex;
-} 
+}
 
 li > img {
   display: flex;

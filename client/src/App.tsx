@@ -15,6 +15,7 @@ import "./css/Games.css";
 import "./css/Cart.css";
 import "./css/Search.css";
 import Spinner from "./components/layout/Spinner";
+import Footer from "./components/layout/Footer";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -36,6 +37,7 @@ const App = () => {
             {/* <Route exact path='/' component={Landing} /> */}
             <Route component={Routes} />
           </Switch>
+          <Footer />
         </Fragment>
       </Router>
     </Suspense>
