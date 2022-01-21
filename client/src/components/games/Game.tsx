@@ -33,6 +33,34 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
     return lastmonths;
   };
 
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          color: "white",
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: "white",
+        },
+        grid: {
+          color: "#093170",
+        },
+      },
+      y: {
+        ticks: {
+          color: "white",
+        },
+        grid: {
+          color: "#093170",
+        },
+      },
+    },
+  };
+
   const data = {
     labels: labels(),
     datasets: [
@@ -43,9 +71,13 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
             ? null
             : games.game.price_history,
         fill: false,
-        borderColor: "red",
-        backgroundColor: "blue",
-        tension: 0.1,
+        borderColor: "#c62828",
+        backgroundColor: "#c62828",
+        tension: 0.3,
+        pointHoverRadius: 8,
+        pointRadius: 4,
+        pointStyle: "rectRot",
+        pointBorderColor: "white",
       },
     ],
   };
@@ -155,7 +187,7 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
               )}
             </div>
             <h2>{t("game.history")}</h2>
-            <Line data={data} />
+            <Line data={data} options={options} />
           </div>
         </Fragment>
       )}
