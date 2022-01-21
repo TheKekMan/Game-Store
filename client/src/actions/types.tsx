@@ -21,3 +21,4 @@ export const GET_DEV = "GET_DEV";
 export const CLEAR_DEV = "CLEAR_DEV";
 export const DEV_ERROR = "DEV_ERROR";
 export const CART_ITEM = "CART_ITEM";
+export const CART_GET = "CART_GET";

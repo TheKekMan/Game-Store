@@ -14,7 +14,7 @@ Router.post("/addtocart", auth, addToCart);
 Router.post("/remfromcart", auth, remFromCart);
 
 // Get game from card
-Router.get("/addtocart", auth, getFromCart);
+Router.get("/getfromcart", auth, getFromCart);
 
 // Buy game from card
 Router.post("/buyfromcart", auth, buyFromCart);

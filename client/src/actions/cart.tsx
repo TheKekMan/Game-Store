@@ -1,4 +1,10 @@
-import { CART_ADD, CART_REMOVE, CART_ERROR, CART_ITEM } from "./types";
+import {
+  CART_ADD,
+  CART_REMOVE,
+  CART_ERROR,
+  CART_ITEM,
+  CART_GET,
+} from "./types";
 import axios from "axios";
 import { setAlert } from "./alert";
 import { loadUser } from "./auth";
@@ -69,15 +75,13 @@ export const getFromCart =
       axios.defaults.headers.common["userid"] = userid.toString();
       try {
         const res = await axios.get(
-          "http://localhost:3000/gamestore/api/cart/addtocart",
+          "http://localhost:3000/gamestore/api/cart/getfromcart",
           config
         );
         if (res.data.items.length !== 0) {
-          res.data.items.map((item: any) => {
-            dispatch({
-              type: CART_ADD,
-              payload: item,
-            });
+          dispatch({
+            type: CART_GET,
+            payload: res.data.items,
           });
         }
       } catch (err) {
