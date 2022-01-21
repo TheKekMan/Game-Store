@@ -103,7 +103,7 @@ export const removeFromCart =
     };
     const body = JSON.stringify({ gkeyid });
     try {
-      const res = await axios.post(
+      await axios.post(
         "http://localhost:3000/gamestore/api/cart/remfromcart",
         body,
         config
@@ -140,7 +140,7 @@ export const buyFromCart =
           type: CART_REMOVE,
           payload: gkeyid,
         });
-        res.data.items.map((item: any) => {
+        res.data.items.forEach((item: any) => {
           dispatch({
             type: CART_ADD,
             payload: item,
