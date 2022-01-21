@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { removeFromCart } from "../../actions/cart";
 
 const CartItem = ({ item }: { item: any }) => {
@@ -13,7 +14,9 @@ const CartItem = ({ item }: { item: any }) => {
   if (item.status === false) {
     return (
       <div className="cart-item">
-        <img src={item.poster} alt="" />
+        <Link className="cart-link" to={`/games/${item.gameid}`}>
+          <img src={item.poster} alt="" />
+        </Link>
         <h4>{item.title}</h4>
         <p className="price">
           {formatter.format(item.price - item.price * item.discount)}
@@ -43,7 +46,9 @@ const CartItem = ({ item }: { item: any }) => {
   } else {
     return (
       <div className="cart-item key">
-        <img src={item.poster} alt="" />
+        <Link className="cart-link" to={`/games/${item.gameid}`}>
+          <img src={item.poster} alt="" />
+        </Link>
         <h4>{item.title}</h4>
         <h5>
           {" "}

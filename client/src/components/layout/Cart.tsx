@@ -1,30 +1,35 @@
 import GooglePayButton from "@google-pay/button-react";
-import React, { Fragment, useEffect } from "react";
+import React, { ChangeEvent, Fragment, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import { buyFromCart } from "../../actions/cart";
-
-import { CART_ITEM } from "../../actions/types";
+import { TextField } from "../../mui";
 import { RootState } from "../../reducers";
 import CartItem from "./CartItem";
 
 const Cart = () => {
   const { t } = useTranslation();
   const carts = useSelector((state: RootState) => state.cart.cart);
+  let foundIds: Array<string> = [];
+  const [searchid, setSearchId] = useState(foundIds);
   const dispatch = useDispatch();
   let total = 0;
+
   useEffect(() => {
-    setAlert("Payment Success", "success");
-    if (carts.length !== 0) {
-      const ccart = carts;
-      let count = ccart.length;
-      dispatch({
-        type: CART_ITEM,
-        len: count,
-      });
-    }
-  }, [carts.length, carts, dispatch]);
+    setSearchId(carts.map((item: any) => item.gameid));
+  }, [carts]);
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const search = e.target.value.toLowerCase();
+    foundIds = carts.map((item: any) =>
+      item.title.toLowerCase().includes(search) ? item.gameid : null
+    );
+    setSearchId(foundIds);
+  };
+
   if (carts === undefined || carts === null || carts.length === 0) {
     return (
       <Fragment>
@@ -60,21 +65,21 @@ const Cart = () => {
     return (
       <Fragment>
         <div className="cart-container">
-          {/* <button
-            className="btn btn-info close"
-            onClick={() =>
-              document
-                .querySelector(".cart-container")!
-                .classList.remove("is-open")
-            }
-          >
-            <i className="fas fa-times"></i>
-          </button> */}
+          <TextField
+            id="standard-basic"
+            label={t("search")}
+            variant="standard"
+            color="primary"
+            onChange={handleChange}
+            sx={{ marginBottom: "1em" }}
+          />
           <div className="content">
             {cart.length !== 0 ? (
-              cart.map((item: any, index: React.Key) => (
-                <CartItem key={index} item={item} />
-              ))
+              cart.map((item: any, index: React.Key) =>
+                searchid.includes(item.gameid) ? (
+                  <CartItem key={index} item={item} />
+                ) : null
+              )
             ) : (
               <h4>пусто</h4>
             )}

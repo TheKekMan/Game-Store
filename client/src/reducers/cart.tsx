@@ -4,7 +4,8 @@ import {
   CART_CLEAR,
   CART_ERROR,
   CART_ITEM,
-} from '../actions/types';
+  CART_GET,
+} from "../actions/types";
 
 const initialState = {
   cart: [],
@@ -14,14 +15,24 @@ const initialState = {
   length: 0,
 };
 
-export default function cartReducer(state = initialState, action: { payload: any; type?: string; len?: number; }): any {
-  const { type, payload, len} = action;
+export default function cartReducer(
+  state = initialState,
+  action: { payload: any; type?: string; len?: number }
+): any {
+  const { type, payload, len } = action;
 
   switch (type) {
     case CART_ADD:
       return {
         ...state,
         cart: [...state.cart, payload],
+        error: {},
+        loading: false,
+      };
+    case CART_GET:
+      return {
+        ...state,
+        cart: payload,
         error: {},
         loading: false,
       };
@@ -42,7 +53,12 @@ export default function cartReducer(state = initialState, action: { payload: any
     case CART_CLEAR:
       return { ...state, cart: [], error: {}, loading: false };
     case CART_ERROR:
-      return { ...state, cart: [...state.cart], error: payload, loading: false };
+      return {
+        ...state,
+        cart: [...state.cart],
+        error: payload,
+        loading: false,
+      };
     default:
       return state;
   }
