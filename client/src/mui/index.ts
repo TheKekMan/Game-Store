@@ -13,3 +13,7 @@ export { default as YouTubeIcon } from "@mui/icons-material/YouTube";
 export { default as TextField } from "@mui/material/TextField";
 export { withStyles } from "@mui/material";
 export { default as Box } from "@mui/material/Box";
+export { default as FormControl } from "@mui/material/FormControl";
+export { default as FormHelperText } from "@mui/material/FormHelperText";
+export { default as Input } from "@mui/material/FilledInput";
+export { default as InputLabel } from "@mui/material/InputLabel";

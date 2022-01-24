@@ -6,6 +6,13 @@ import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
+import {
+  Button,
+  FormControl,
+  FormHelperText,
+  Input,
+  Typography,
+} from "../../mui";
 
 interface Props {
   setAlert: any;
@@ -25,7 +32,7 @@ const Register = ({ register, isAuthenticated }: Props) => {
     validationSchema: Yup.object({
       email: Yup.string()
         .email(t("validation.email"))
-        .required(t("validation.required")), 
+        .required(t("validation.required")),
       password: Yup.string()
         .min(8, t("validation.min8"))
         .max(20, t("validation.max20"))
@@ -46,13 +53,15 @@ const Register = ({ register, isAuthenticated }: Props) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">{t("register.title")}</h1>
-      <p className="lead">
+      <Typography variant="h3" component="h1" className="large text-primary">
+        {t("register.title")}
+      </Typography>
+      <Typography component="p" className="lead">
         <i className="fas fa-user"></i> {t("register.desc")}
-      </p>
+      </Typography>
       <form className="form" onSubmit={formik.handleSubmit}>
-        <div className="form-group">
-          <input
+        <FormControl className="form-group">
+          <Input
             type="email"
             placeholder={t("register.email")}
             name="email"
@@ -61,11 +70,13 @@ const Register = ({ register, isAuthenticated }: Props) => {
             onBlur={formik.handleBlur}
           />
           {formik.touched.email && formik.errors.email ? (
-            <div className="invalid-feedback">{formik.errors.email}</div>
+            <FormHelperText className="invalid-feedback">
+              {formik.errors.email}
+            </FormHelperText>
           ) : null}
-        </div>
-        <div className="form-group">
-          <input
+        </FormControl>
+        <FormControl className="form-group">
+          <Input
             type="password"
             placeholder={t("register.password")}
             name="password"
@@ -74,11 +85,13 @@ const Register = ({ register, isAuthenticated }: Props) => {
             value={formik.values.password}
           />
           {formik.touched.password && formik.errors.password ? (
-            <div className="invalid-feedback">{formik.errors.password}</div>
+            <FormHelperText className="invalid-feedback">
+              {formik.errors.password}
+            </FormHelperText>
           ) : null}
-        </div>
-        <div className="form-group">
-          <input
+        </FormControl>
+        <FormControl className="form-group">
+          <Input
             type="password"
             placeholder={t("register.confirmPassword")}
             name="confirmPassword"
@@ -87,14 +100,19 @@ const Register = ({ register, isAuthenticated }: Props) => {
             value={formik.values.confirmPassword}
           />
           {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-            <div className="invalid-feedback">{formik.errors.confirmPassword}</div>
+            <FormHelperText className="invalid-feedback">
+              {formik.errors.confirmPassword}
+            </FormHelperText>
           ) : null}
-        </div>
-        <input type="submit" className="btn btn-primary" value="Зарегистрироваться" />
+        </FormControl>
+        <Button variant="contained" type="submit" className="btn btn-primary">
+          {t("register.button")}
+        </Button>
       </form>
-      <p className="my-1 login-redirect">
-      {t("register.haveAnAccount")} <Link to="/login">{t("register.button")}</Link>
-      </p>
+      <Typography component="p" className="my-1 login-redirect">
+        {t("register.haveAnAccount")}{" "}
+        <Link to="/login">{t("register.button")}</Link>
+      </Typography>
     </Fragment>
   );
 };

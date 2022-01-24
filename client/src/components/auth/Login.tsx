@@ -5,6 +5,13 @@ import { login } from "../../actions/auth";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
+import {
+  Button,
+  FormControl,
+  FormHelperText,
+  Input,
+  Typography,
+} from "../../mui";
 
 interface Props {
   login: Function;
@@ -40,13 +47,15 @@ export const Login = ({ login, isAuthenticated }: Props) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">{t("login.title")}</h1>
-      <p className="lead">
+      <Typography variant="h3" component="h1" className="large text-primary">
+        {t("login.title")}
+      </Typography>
+      <Typography component="p" className="lead">
         <i className="fas fa-user"></i> {t("login.desc")}
-      </p>
+      </Typography>
       <form className="form" onSubmit={formik.handleSubmit}>
-        <div className="form-group">
-          <input
+        <FormControl className="form-group">
+          <Input
             type="email"
             placeholder={t("login.email")}
             name="email"
@@ -55,11 +64,13 @@ export const Login = ({ login, isAuthenticated }: Props) => {
             onBlur={formik.handleBlur}
           />
           {formik.touched.email && formik.errors.email ? (
-            <div className="invalid-feedback">{formik.errors.email}</div>
+            <FormHelperText className="invalid-feedback">
+              {formik.errors.email}
+            </FormHelperText>
           ) : null}
-        </div>
-        <div className="form-group">
-          <input
+        </FormControl>
+        <FormControl className="form-group">
+          <Input
             type="password"
             placeholder={t("login.password")}
             name="password"
@@ -68,14 +79,18 @@ export const Login = ({ login, isAuthenticated }: Props) => {
             onBlur={formik.handleBlur}
           />
           {formik.touched.password && formik.errors.password ? (
-            <div className="invalid-feedback">{formik.errors.password}</div>
+            <FormHelperText className="invalid-feedback">
+              {formik.errors.password}
+            </FormHelperText>
           ) : null}
-        </div>
-        <input type="submit" className="btn btn-primary" value="Вход" />
+        </FormControl>
+        <Button variant="contained" type="submit" className="btn btn-primary">
+          {t("login.title")}
+        </Button>
       </form>
-      <p className="my-1 login-redirect">
+      <Typography component="p" className="my-1 login-redirect">
         {t("login.noAccount")} <Link to="/register">{t("register.title")}</Link>
-      </p>
+      </Typography>
     </Fragment>
   );
 };

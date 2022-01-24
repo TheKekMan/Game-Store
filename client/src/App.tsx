@@ -50,15 +50,6 @@ const App = () => {
 
   const lightTheme = createTheme({
     palette: {
-      // primary: {
-      //   main: "#202020",
-      // },
-      // secondary: {
-      //   main: "#121212",
-      // },
-      // text: {
-      //   primary: "#FFFFFF",
-      // },
       mode: "light",
     },
     typography: {
