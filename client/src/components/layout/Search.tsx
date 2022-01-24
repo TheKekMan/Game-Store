@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { withRouter } from "react-router-dom";
+import { Button } from "../../mui";
 
 let query = "";
 
@@ -26,9 +27,9 @@ const Search = (props: any) => {
         placeholder={t("search")}
         onChange={(e) => onChange(e)}
       />
-      <button type="submit">
+      <Button type="submit">
         <i className="fas fa-search"></i>
-      </button>
+      </Button>
     </form>
   );
 };

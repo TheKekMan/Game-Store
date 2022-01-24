@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeFromCart } from "../../actions/cart";
+import { Box, Button, Typography } from "../../mui";
 
 const CartItem = ({ item }: { item: any }) => {
   const { t } = useTranslation();
@@ -13,14 +14,14 @@ const CartItem = ({ item }: { item: any }) => {
   });
   if (item.status === false) {
     return (
-      <div className="cart-item">
+      <Box className="cart-item">
         <Link className="cart-link" to={`/games/${item.gameid}`}>
           <img src={item.poster} alt="" />
         </Link>
-        <h4>{item.title}</h4>
-        <p className="price">
+        <Typography>{item.title}</Typography>
+        <Typography component="p" className="price">
           {formatter.format(item.price - item.price * item.discount)}
-        </p>
+        </Typography>
         {/* {item.status === true ? (
           <h3>{item.title}</h3>
         ) : (
@@ -33,28 +34,28 @@ const CartItem = ({ item }: { item: any }) => {
             <i className="fa fa-shopping-basket"></i>
           </button>
         )} */}
-        <button
+        <Button
           className="btn btn-danger remove"
           onClick={() => {
             dispatch(removeFromCart(item.gkeyid));
           }}
+          variant="contained"
         >
           <i className="far fa-trash-alt"></i>
-        </button>
-      </div>
+        </Button>
+      </Box>
     );
   } else {
     return (
-      <div className="cart-item key">
+      <Box className="cart-item key">
         <Link className="cart-link" to={`/games/${item.gameid}`}>
           <img src={item.poster} alt="" />
         </Link>
-        <h4>{item.title}</h4>
-        <h5>
-          {" "}
-          {t("cart.code")}: {item.value}{" "}
-        </h5>
-      </div>
+        <Typography>{item.title}</Typography>
+        <Typography fontSize={"13px"}>
+          {t("cart.code")}: {item.value}
+        </Typography>
+      </Box>
     );
   }
 };

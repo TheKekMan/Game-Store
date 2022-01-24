@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Box, Typography } from "../../mui";
 
@@ -10,6 +11,7 @@ var formatter = new Intl.NumberFormat("ru-RU", {
 formatter.format(2500);
 
 const GameItem = ({ game }: { game: any }) => {
+  const { t } = useTranslation();
   return (
     <Box className="game-item">
       <Link to={`/games/${game.game_id}`}>
@@ -37,7 +39,7 @@ const GameItem = ({ game }: { game: any }) => {
           </Box>
         ) : (
           <Typography component="span" className="free-price">
-            БЕСПЛАТНО
+            {t("game.free")}
           </Typography>
         )}
       </Link>

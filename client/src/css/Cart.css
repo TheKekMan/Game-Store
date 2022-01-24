@@ -44,8 +44,10 @@
 }
 .cart-item > .remove,
 .cart-item > .success {
-  margin: 0;
+  margin-right: 0.5rem;
   padding: 0.4rem;
+  min-width: 50px;
+  min-height: 40px;
 }
 .cart-item > img {
   max-height: 100px;
@@ -67,7 +69,7 @@
 
 .content {
   overflow-y: auto;
-  max-height: 70vh;
+  max-height: 65vh;
 }
 
 .details-info > p {
@@ -83,6 +85,6 @@
   }
   .content {
     overflow-y: auto;
-    max-height: 50vh;
+    max-height: 60vh;
   }
 }
