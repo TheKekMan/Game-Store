@@ -70,6 +70,10 @@
   max-height: 70vh;
 }
 
+.details-info > p {
+  margin-bottom: 0.5rem;
+}
+
 @media (max-width: 700px) {
   .cart-container {
     padding-top: 7rem;

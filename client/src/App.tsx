@@ -41,6 +41,31 @@ const App = () => {
       // },
       mode: "dark",
     },
+    typography: {
+      allVariants: {
+        color: "rgba(255, 255, 255)",
+      },
+    },
+  });
+
+  const lightTheme = createTheme({
+    palette: {
+      // primary: {
+      //   main: "#202020",
+      // },
+      // secondary: {
+      //   main: "#121212",
+      // },
+      // text: {
+      //   primary: "#FFFFFF",
+      // },
+      mode: "light",
+    },
+    typography: {
+      allVariants: {
+        color: "rgba(0, 0, 0, 0.87)",
+      },
+    },
   });
 
   return (

@@ -69,7 +69,6 @@ const Cart = () => {
             id="standard-basic"
             label={t("search")}
             variant="standard"
-            color="primary"
             onChange={handleChange}
             sx={{ marginBottom: "1em" }}
           />

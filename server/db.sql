@@ -11,8 +11,7 @@ CREATE TABLE games
   price_history FLOAT[] NOT NULL,
   developer TEXT NOT NULL,
   discount FLOAT default 0,
-  is_video BOOLEAN default false,
-  video TEXT default NULL
+  media TEXT[] default NULL
 
 );
 CREATE TABLE users

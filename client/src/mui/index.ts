@@ -12,3 +12,4 @@ export { default as TwitterIcon } from "@mui/icons-material/Twitter";
 export { default as YouTubeIcon } from "@mui/icons-material/YouTube";
 export { default as TextField } from "@mui/material/TextField";
 export { withStyles } from "@mui/material";
+export { default as Box } from "@mui/material/Box";
