@@ -41,10 +41,26 @@ const App = () => {
       // },
       mode: "dark",
     },
+    typography: {
+      allVariants: {
+        color: "rgba(255, 255, 255)",
+      },
+    },
+  });
+
+  const lightTheme = createTheme({
+    palette: {
+      mode: "light",
+    },
+    typography: {
+      allVariants: {
+        color: "rgba(0, 0, 0, 0.87)",
+      },
+    },
   });
 
   return (
-    <Suspense fallback={Spinner}>
+    <Suspense fallback={<Spinner />}>
       <Router>
         <ThemeProvider theme={darkTheme}>
           <Fragment>

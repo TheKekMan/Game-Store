@@ -114,6 +114,7 @@ export const login =
 
     try {
       const res = await axios.post("gamestore/api/auth/auth", body, config);
+      console.log(res);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,
@@ -122,6 +123,7 @@ export const login =
     } catch (err) {
       if (err instanceof Error) {
         const errors = err.message;
+
         dispatch(setAlert(errors, "error"));
 
         dispatch({

@@ -5,7 +5,7 @@ import Spinner from "../layout/Spinner";
 import { getGames } from "../../actions/games";
 import { RootState } from "../../reducers";
 import { useTranslation } from "react-i18next";
-import { Pagination, Stack } from "../../mui";
+import { Pagination, Stack, Typography } from "../../mui";
 
 // custom search Hook
 const useSearch = (query: any) => {
@@ -68,7 +68,7 @@ const Games = (props: any) => {
         </>
       ) : (
         // <h4>{games.error.msg}</h4>
-        <h4>{t("noGames")}</h4>
+        <Typography variant="h4">{t("noGames")}</Typography>
       )}
     </Fragment>
   );
