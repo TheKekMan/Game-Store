@@ -44,7 +44,7 @@ const App = () => {
   });
 
   return (
-    <Suspense fallback={Spinner}>
+    <Suspense fallback={<Spinner />}>
       <Router>
         <ThemeProvider theme={darkTheme}>
           <Fragment>
