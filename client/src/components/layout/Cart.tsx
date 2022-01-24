@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import { buyFromCart } from "../../actions/cart";
-import { TextField } from "../../mui";
+import { Box, TextField, Typography } from "../../mui";
 import { RootState } from "../../reducers";
 import CartItem from "./CartItem";
 
@@ -64,7 +64,7 @@ const Cart = () => {
 
     return (
       <>
-        <div className="cart-container">
+        <Box className="cart-container">
           <TextField
             id="standard-basic"
             label={t("search")}
@@ -72,28 +72,28 @@ const Cart = () => {
             onChange={handleChange}
             sx={{ marginBottom: "1em" }}
           />
-          <div className="content">
-            {cart.length !== 0 ? (
+          <Box className="content">
+            {cart.length !== 0 && !searchid.every((elem) => elem === null) ? (
               cart.map((item: any) =>
                 searchid.includes(item.gameid) ? (
                   <CartItem key={item.gkeyid} item={item} />
                 ) : null
               )
             ) : (
-              <h4>пусто</h4>
+              <Typography variant="h5">пусто</Typography>
             )}
-          </div>
+          </Box>
           <hr />
 
           {total ? (
             <>
-              <div className="cart-total">
-                <span></span>
-                <h4>{t("cart.total")}</h4>
-                <strong className="price">{formatter.format(total)}</strong>
-                <span></span>
-              </div>
-              <div className="cart-gpay">
+              <Box className="cart-total">
+                <Typography variant="h6">{t("cart.total")}:</Typography>
+                <Typography component="strong" className="price">
+                  {formatter.format(total)}
+                </Typography>
+              </Box>
+              <Box className="cart-gpay">
                 <GooglePayButton
                   environment="TEST"
                   buttonColor="white"
@@ -160,10 +160,10 @@ const Cart = () => {
                     }
                   }}
                 />
-              </div>
+              </Box>
             </>
           ) : null}
-        </div>
+        </Box>
       </>
     );
   }

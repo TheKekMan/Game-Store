@@ -221,7 +221,7 @@ hr {
   color: var(--light-basic);
 }
 
-.btn-danger,
+.btn.btn-danger,
 .bg-danger,
 .badge-danger,
 .alert-danger {
