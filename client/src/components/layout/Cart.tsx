@@ -63,7 +63,7 @@ const Cart = () => {
     });
 
     return (
-      <Fragment>
+      <>
         <div className="cart-container">
           <TextField
             id="standard-basic"
@@ -75,9 +75,9 @@ const Cart = () => {
           />
           <div className="content">
             {cart.length !== 0 ? (
-              cart.map((item: any, index: React.Key) =>
+              cart.map((item: any) =>
                 searchid.includes(item.gameid) ? (
-                  <CartItem key={index} item={item} />
+                  <CartItem key={item.gkeyid} item={item} />
                 ) : null
               )
             ) : (
@@ -165,7 +165,7 @@ const Cart = () => {
             </>
           ) : null}
         </div>
-      </Fragment>
+      </>
     );
   }
 };
