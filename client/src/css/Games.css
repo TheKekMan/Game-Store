@@ -135,13 +135,13 @@
   margin-bottom: 10px;
   font-size: 2rem;
 }
-.list-price-discount {
+.price-container .list-price-discount {
   text-decoration: line-through;
   color: rgb(140, 140, 140);
   margin-right: 8px;
 }
-.discount-amount {
-  font-size: 14px;
+.price-container .discount-amount {
+  font-size: 18px;
   letter-spacing: 0.5px;
   line-height: 1.625;
   padding: 3px 6px;
