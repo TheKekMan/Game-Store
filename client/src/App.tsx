@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense, useEffect } from "react";
+import React, { Fragment, Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 // import Landing from './components/layout/Landing';
@@ -16,13 +16,32 @@ import "./css/Cart.css";
 import "./css/Search.css";
 import Spinner from "./components/layout/Spinner";
 import Footer from "./components/layout/Footer";
-import { createTheme, ThemeProvider } from "./mui";
+import { createTheme, DarkModeIcon, ThemeProvider, IconButton } from "./mui";
+import { CssBaseline } from "@mui/material";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
 const App = () => {
+  const [dark, setDark] = useState(true);
+
+  const handleThemeChange = () => {
+    if (dark) setDark(false);
+    else setDark(true);
+  };
+
+  const Switcher = () => {
+    return (
+      <IconButton
+        sx={{ position: "fixed", right: "10px", bottom: "10px" }}
+        onClick={() => handleThemeChange()}
+      >
+        <DarkModeIcon />
+      </IconButton>
+    );
+  };
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());
@@ -30,15 +49,18 @@ const App = () => {
 
   const darkTheme = createTheme({
     palette: {
-      // primary: {
-      //   main: "#202020",
-      // },
-      // secondary: {
-      //   main: "#121212",
-      // },
-      // text: {
-      //   primary: "#FFFFFF",
-      // },
+      background: {
+        default: "#121212",
+      },
+      primary: {
+        main: "#121212",
+      },
+      secondary: {
+        main: "#202020",
+      },
+      text: {
+        primary: "#FFFFFF",
+      },
       mode: "dark",
     },
     typography: {
@@ -50,6 +72,18 @@ const App = () => {
 
   const lightTheme = createTheme({
     palette: {
+      background: {
+        default: "#fafafa",
+      },
+      primary: {
+        main: "#fafafa",
+      },
+      secondary: {
+        main: "#e1e2e1",
+      },
+      text: {
+        primary: "#000000",
+      },
       mode: "light",
     },
     typography: {
@@ -62,7 +96,8 @@ const App = () => {
   return (
     <Suspense fallback={<Spinner />}>
       <Router>
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={dark ? darkTheme : lightTheme}>
+          <CssBaseline />
           <Fragment>
             <Navbar />
             <Cart />
@@ -71,6 +106,7 @@ const App = () => {
               <Route component={Routes} />
             </Switch>
             <Footer />
+            <Switcher />
           </Fragment>
         </ThemeProvider>
       </Router>

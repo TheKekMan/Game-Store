@@ -17,3 +17,5 @@ export { default as FormControl } from "@mui/material/FormControl";
 export { default as FormHelperText } from "@mui/material/FormHelperText";
 export { default as Input } from "@mui/material/FilledInput";
 export { default as InputLabel } from "@mui/material/InputLabel";
+export { default as DarkModeIcon } from "@mui/icons-material/DarkMode";
+export { default as IconButton } from "@mui/material/IconButton";

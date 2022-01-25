@@ -9,6 +9,7 @@ import Games from "../games/Games";
 import GamesByTag from "../games/GamesByTag";
 import Game from "../games/Game";
 import ReactDOM from "react-dom";
+import { Box } from "../../mui";
 
 // TODO:
 // import Dashboard from '../dashboard/Dashboard';
@@ -23,7 +24,11 @@ import ReactDOM from "react-dom";
 
 const Routes = () => {
   return (
-    <section className="container">
+    <Box
+      component="section"
+      className="container"
+      sx={{ backgroundColor: "background.default" }}
+    >
       {ReactDOM.createPortal(<Alert />, document.body)}
       <Switch>
         <Route exact path="/" component={Games} />
@@ -39,7 +44,7 @@ const Routes = () => {
         {/* <PrivateRoute exact path='/posts/:id' component={Post} /> */}
         <Route component={NotFound} />
       </Switch>
-    </section>
+    </Box>
   );
 };
 

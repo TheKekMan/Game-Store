@@ -192,12 +192,16 @@ hr {
   text-align: center;
 }
 
-.btn-primary,
+.btn.btn-primary,
 .bg-primary,
 .badge-primary,
 .alert-primary {
-  background: var(--primary-color);
+  background-color: var(--primary-color);
   color: #fff;
+}
+
+.btn.btn-primary:hover {
+  background-color: #005fb3;
 }
 
 .btn-light,
@@ -356,7 +360,6 @@ button {
 }
 
 .navbar a {
-  color: #fff;
   padding: 0.45rem;
   margin: 0 0.25rem;
 }
