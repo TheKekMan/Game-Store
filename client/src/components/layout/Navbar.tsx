@@ -8,14 +8,7 @@ import { CART_ITEM } from "../../actions/types";
 import { RootState } from "../../reducers";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
-import {
-  Box,
-  Button,
-  createTheme,
-  Menu,
-  MenuItem,
-  ThemeProvider,
-} from "../../mui";
+import { Box, Button, Menu, MenuItem } from "../../mui";
 
 interface Props {
   auth: {

@@ -12,6 +12,7 @@ import uuid from "uuid";
 import { useTranslation } from "react-i18next";
 import { Box, Typography } from "../../mui";
 import Carousel from "react-material-ui-carousel";
+import { useTheme } from "@mui/material";
 
 const Video = (props: any) => {
   return (
@@ -36,16 +37,18 @@ const Video = (props: any) => {
 
 const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
   const { t } = useTranslation();
-
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getGameById(props.match.params.id));
-  }, [dispatch, props.match.params.id]);
   const games = useSelector((state: RootState) => state.games);
+  const userid = useSelector((state: RootState) => state.auth.userid);
+  const theme = useTheme();
+  const labelColor = theme.palette.mode === "light" ? "black" : "white";
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
-  const userid = useSelector((state: RootState) => state.auth.userid);
+
+  useEffect(() => {
+    dispatch(getGameById(props.match.params.id));
+  }, [dispatch, props.match.params.id]);
   // const cartItems = useSelector((state: RootState) => state.cart.cart);
 
   const labels = () => {
@@ -55,18 +58,19 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
     }
     return lastmonths;
   };
+
   const options = {
     plugins: {
       legend: {
         labels: {
-          color: "white",
+          color: labelColor,
         },
       },
     },
     scales: {
       x: {
         ticks: {
-          color: "white",
+          color: labelColor,
         },
         grid: {
           color: "#093170",
@@ -74,7 +78,7 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
       },
       y: {
         ticks: {
-          color: "white",
+          color: labelColor,
         },
         grid: {
           color: "#093170",
