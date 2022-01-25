@@ -22,13 +22,21 @@ import { CssBaseline } from "@mui/material";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
+if (!localStorage.theme) {
+  localStorage.theme = "dark";
+}
 
 const App = () => {
-  const [dark, setDark] = useState(true);
+  const [pageTheme, setPageTheme] = useState(localStorage.theme);
 
   const handleThemeChange = () => {
-    if (dark) setDark(false);
-    else setDark(true);
+    if (localStorage.theme === "dark") {
+      setPageTheme("light");
+      localStorage.theme = "light";
+    } else {
+      localStorage.theme = "dark";
+      setPageTheme("dark");
+    }
   };
 
   const Switcher = () => {
@@ -96,7 +104,7 @@ const App = () => {
   return (
     <Suspense fallback={<Spinner />}>
       <Router>
-        <ThemeProvider theme={dark ? darkTheme : lightTheme}>
+        <ThemeProvider theme={pageTheme === "dark" ? darkTheme : lightTheme}>
           <CssBaseline />
           <Fragment>
             <Navbar />
