@@ -10,6 +10,7 @@ import GamesByTag from "../games/GamesByTag";
 import Game from "../games/Game";
 import ReactDOM from "react-dom";
 import { Box } from "../../mui";
+import Profile from "../profile/Profile";
 
 // TODO:
 // import Dashboard from '../dashboard/Dashboard';
@@ -18,7 +19,6 @@ import { Box } from "../../mui";
 // import AddExperience from '../profile-forms/AddExperience';
 // import AddEducation from '../profile-forms/AddEducation';
 // import Profiles from '../profiles/Profiles';
-// import Profile from '../profile/Profile';
 // import Posts from '../posts/Posts';
 // import Post from '../post/Post';
 
@@ -34,7 +34,7 @@ const Routes = () => {
           <Route exact path="/games/search/:query" component={Games} />
           <Route exact path="/games/tag/:tag" component={GamesByTag} />
           <Route exact path="/games/:id" component={Game} />
-          {/*<PrivateRoute exact path='/dashboard' component={Dashboard} /> */}
+          <PrivateRoute exact path="/profile" component={Profile} />
           {/* <PrivateRoute exact path='/add-experience' component={AddExperience} /> */}
           {/* <PrivateRoute exact path='/add-education' component={AddEducation} /> */}
           {/* <PrivateRoute exact path='/posts' component={Posts} /> */}

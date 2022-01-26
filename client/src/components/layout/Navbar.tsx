@@ -45,7 +45,6 @@ const Navbar = ({
       handleClose();
     }
   };
-
   const open = Boolean(anchorEl);
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -71,7 +70,7 @@ const Navbar = ({
   const authLinks = (
     <ul>
       <li>
-        <Link to={`/profile/${userid}`}>
+        <Link to={`/profile`}>
           {user !== null ? (
             <i className="fas fa-user">({user.email})</i>
           ) : (
@@ -93,7 +92,9 @@ const Navbar = ({
             href="#!"
           >
             <i className="fas fa-shopping-cart"></i>
-            <span className="cart-items-no">{cart.length}</span>
+            <span className="cart-items-no">
+              {cart.filter((item: any) => item.status === false).length}
+            </span>
           </a>
         </li>
       ) : null}
