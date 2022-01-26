@@ -56,7 +56,6 @@ const Games = (props: any) => {
             <Stack spacing={2}>
               <Pagination
                 count={Math.ceil(games.results.rows.length / 8)}
-                color="primary"
                 size={width > 768 ? "large" : width < 420 ? "small" : "medium"}
                 siblingCount={0}
                 boundaryCount={1}

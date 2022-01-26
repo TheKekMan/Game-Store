@@ -33,7 +33,7 @@ const Cart = () => {
   if (carts === undefined || carts === null || carts.length === 0) {
     return (
       <Fragment>
-        <div className="cart-container">
+        <Box className="cart-container">
           <button
             className="btn btn-info close"
             onClick={() =>
@@ -47,7 +47,7 @@ const Cart = () => {
           <h4>пусто</h4>
 
           <hr />
-        </div>
+        </Box>
       </Fragment>
     );
   } else {
@@ -64,13 +64,17 @@ const Cart = () => {
 
     return (
       <>
-        <Box className="cart-container">
+        <Box
+          className="cart-container"
+          sx={{ backgroundColor: "secondary.main" }}
+        >
           <TextField
             id="standard-basic"
             label={t("search")}
             variant="standard"
             onChange={handleChange}
             sx={{ marginBottom: "1em" }}
+            color="info"
           />
           <Box className="content">
             {cart.length !== 0 && !searchid.every((elem) => elem === null) ? (

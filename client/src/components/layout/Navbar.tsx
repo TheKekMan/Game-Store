@@ -8,7 +8,7 @@ import { CART_ITEM } from "../../actions/types";
 import { RootState } from "../../reducers";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
-import { Button, createTheme, Menu, MenuItem, ThemeProvider } from "../../mui";
+import { Box, Button, Menu, MenuItem } from "../../mui";
 
 interface Props {
   auth: {
@@ -31,15 +31,6 @@ const Navbar = ({
   const [language, setLanguage] = useState(
     localStorage.getItem("i18nextLng") || "ru"
   );
-
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#f5f5f5",
-        contrastText: "#f5f5f5",
-      },
-    },
-  });
 
   const switchLanguage = (language: string) => {
     if (language === "RU") {
@@ -113,33 +104,31 @@ const Navbar = ({
         </a>
       </li>
       <li>
-        <ThemeProvider theme={theme}>
-          <Button
-            id="basic-button"
-            aria-controls="basic-menu"
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-            color="primary"
-            size="medium"
-            style={{ minWidth: "40px" }}
-          >
-            {language?.toUpperCase()}
-          </Button>
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            disableScrollLock={true}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-          >
-            <MenuItem onClick={() => switchLanguage("EN")}>English</MenuItem>
-            <MenuItem onClick={() => switchLanguage("RU")}>Русский</MenuItem>
-          </Menu>
-        </ThemeProvider>
+        <Button
+          id="basic-button"
+          aria-controls="basic-menu"
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+          size="medium"
+          style={{ minWidth: "40px" }}
+          sx={{ color: "text.primary" }}
+        >
+          {language?.toUpperCase()}
+        </Button>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          disableScrollLock={true}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <MenuItem onClick={() => switchLanguage("EN")}>English</MenuItem>
+          <MenuItem onClick={() => switchLanguage("RU")}>Русский</MenuItem>
+        </Menu>
       </li>
     </ul>
   );
@@ -152,38 +141,40 @@ const Navbar = ({
         <Link to="/login">{t("buttons.login")}</Link>
       </li>
       <li>
-        <ThemeProvider theme={theme}>
-          <Button
-            id="basic-button"
-            aria-controls="basic-menu"
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-            color="primary"
-            size="medium"
-            style={{ minWidth: "40px" }}
-          >
-            {language?.toUpperCase()}
-          </Button>
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            disableScrollLock={true}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-          >
-            <MenuItem onClick={() => switchLanguage("EN")}>English</MenuItem>
-            <MenuItem onClick={() => switchLanguage("RU")}>Русский</MenuItem>
-          </Menu>
-        </ThemeProvider>
+        <Button
+          id="basic-button"
+          aria-controls="basic-menu"
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+          size="medium"
+          style={{ minWidth: "40px" }}
+          sx={{ color: "text.primary" }}
+        >
+          {language?.toUpperCase()}
+        </Button>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          disableScrollLock={true}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <MenuItem onClick={() => switchLanguage("EN")}>English</MenuItem>
+          <MenuItem onClick={() => switchLanguage("RU")}>Русский</MenuItem>
+        </Menu>
       </li>
     </ul>
   );
   return (
-    <nav className="navbar bg-lgray">
+    <Box
+      component="nav"
+      className="navbar"
+      sx={{ backgroundColor: "primary.main", color: "text.primary" }}
+    >
       <div className="home-link">
         <Link to="/">
           <i className="fas fa-home"></i>
@@ -193,7 +184,7 @@ const Navbar = ({
       {!loading && (
         <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
       )}
-    </nav>
+    </Box>
   );
 };
 

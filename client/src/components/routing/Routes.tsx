@@ -9,6 +9,7 @@ import Games from "../games/Games";
 import GamesByTag from "../games/GamesByTag";
 import Game from "../games/Game";
 import ReactDOM from "react-dom";
+import { Box } from "../../mui";
 
 // TODO:
 // import Dashboard from '../dashboard/Dashboard';
@@ -23,23 +24,25 @@ import ReactDOM from "react-dom";
 
 const Routes = () => {
   return (
-    <section className="container">
-      {ReactDOM.createPortal(<Alert />, document.body)}
-      <Switch>
-        <Route exact path="/" component={Games} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/games/search/:query" component={Games} />
-        <Route exact path="/games/tag/:tag" component={GamesByTag} />
-        <Route exact path="/games/:id" component={Game} />
-        {/*<PrivateRoute exact path='/dashboard' component={Dashboard} /> */}
-        {/* <PrivateRoute exact path='/add-experience' component={AddExperience} /> */}
-        {/* <PrivateRoute exact path='/add-education' component={AddEducation} /> */}
-        {/* <PrivateRoute exact path='/posts' component={Posts} /> */}
-        {/* <PrivateRoute exact path='/posts/:id' component={Post} /> */}
-        <Route component={NotFound} />
-      </Switch>
-    </section>
+    <Box component="section" className="container">
+      <>
+        {ReactDOM.createPortal(<Alert />, document.body)}
+        <Switch>
+          <Route exact path="/" component={Games} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/games/search/:query" component={Games} />
+          <Route exact path="/games/tag/:tag" component={GamesByTag} />
+          <Route exact path="/games/:id" component={Game} />
+          {/*<PrivateRoute exact path='/dashboard' component={Dashboard} /> */}
+          {/* <PrivateRoute exact path='/add-experience' component={AddExperience} /> */}
+          {/* <PrivateRoute exact path='/add-education' component={AddEducation} /> */}
+          {/* <PrivateRoute exact path='/posts' component={Posts} /> */}
+          {/* <PrivateRoute exact path='/posts/:id' component={Post} /> */}
+          <Route component={NotFound} />
+        </Switch>
+      </>
+    </Box>
   );
 };
 

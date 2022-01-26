@@ -13,7 +13,6 @@ const CustomFooter = styled(Container)(() => ({
   textAlign: "center",
   minHeight: "100px",
   maxHeight: "200px",
-  backgroundColor: "#202020",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -22,7 +21,14 @@ const CustomFooter = styled(Container)(() => ({
 
 const Footer = () => {
   return (
-    <CustomFooter maxWidth={false}>
+    <CustomFooter
+      maxWidth={false}
+      sx={{
+        backgroundColor: "secondary.main",
+        position: "relative",
+        bottom: "0",
+      }}
+    >
       <Typography>
         Created by{" "}
         <Link
@@ -30,7 +36,6 @@ const Footer = () => {
           target={"_blank"}
           style={{ textDecoration: "underline" }}
         >
-          {" "}
           TheKekMan
         </Link>
       </Typography>
