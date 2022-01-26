@@ -1,12 +1,10 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeFromCart } from "../../actions/cart";
 import { Box, Button, Typography } from "../../mui";
 
 const CartItem = ({ item }: { item: any }) => {
-  const { t } = useTranslation();
   const dispatch = useDispatch();
   var formatter = new Intl.NumberFormat("ru-RU", {
     style: "currency",

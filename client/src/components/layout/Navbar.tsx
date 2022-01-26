@@ -80,7 +80,7 @@ const Navbar = ({
         </Link>
       </li>
 
-      {cart.length > 0 ? (
+      {cart.filter((item: any) => item.status === false).length > 0 ? (
         <li>
           <a
             className="cart-toggle"
