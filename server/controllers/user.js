@@ -16,17 +16,27 @@ const getUserDetails = async (req, res) => {
       [req.user.id.id]
     );
     if (user.rowCount === 0) {
-      return res.status(404).json({ message: "user not found" });
+      const emptyPayload = {
+        user: {
+          name: "",
+          second_name: " ",
+          avatar:
+            "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png",
+          birthday: "01.01.1970",
+        },
+      };
+      res.json(emptyPayload);
+    } else {
+      const payload = {
+        user: {
+          name: user.rows[0].name,
+          second_name: user.rows[0].second_name,
+          avatar: user.rows[0].avatar_url,
+          birthday: user.rows[0].birthday,
+        },
+      };
+      res.json(payload);
     }
-    const payload = {
-      user: {
-        name: user.rows[0].name,
-        second_name: user.rows[0].second_name,
-        avatar: user.rows[0].avatar_url,
-        birthday: user.rows[0].birthday,
-      },
-    };
-    res.json(payload);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
