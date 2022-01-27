@@ -50,7 +50,7 @@
         "name": "Имя",
         "secondName": "Фамилия",
         "dateOfBirth": "Дата рождения",
-        "gamesOwned": "Игр приобретено",
+        "gamesOwned": "Ключей игр приобретено",
         "purchasedGames": "Приобретенные игры",
         "gameTitle": "Название",
         "gameKey": "Ключ игры"

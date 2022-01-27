@@ -17,7 +17,13 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
-  userInfo: null,
+  userInfo: {
+    name: "",
+    secondName: "",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png",
+    birthday: "01.01.1970",
+  },
   userid: null,
   usergames: null,
 };
