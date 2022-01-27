@@ -6,6 +6,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   USER_LOADED,
+  USER_INFO,
   AUTH_ERROR,
   LOGOUT,
   ACCOUNT_DELETED,
@@ -16,6 +17,7 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
+  userInfo: null,
   userid: null,
   usergames: null,
 };
@@ -35,6 +37,13 @@ export default function authReducer(
         user: payload.user,
         userid: payload.user.userid,
         usergames: payload.user,
+      };
+    case USER_INFO:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        userInfo: payload.user,
       };
     case REGISTER_SUCCESS:
       localStorage.setItem("token", payload.token);

@@ -432,42 +432,6 @@ button {
   }
 
   /* Profiles Page */
-  .profile {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .profile ul {
-    display: none;
-  }
-
-  /* Profile Page */
-
-  .profile-top img,
-  .profile img {
-    width: 200px;
-    margin: auto;
-  }
-
-  .profile-grid {
-    grid-template-areas:
-      "top"
-      "about"
-      "exp"
-      "edu"
-      "github";
-  }
-
-  .profile-about .skills {
-    flex-direction: column;
-  }
-
-  /* .dash-buttons a {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.2rem;
-  } */
-
   .post {
     grid-template-columns: 1fr;
   }
@@ -508,6 +472,16 @@ li > img {
   .navbar {
     display: flex;
     flex-wrap: wrap;
+  }
+  .profile-info {
+    flex-direction: column;
+    column-gap: 1em;
+  }
+  .profile-info > hr {
+    display: hidden;
+  }
+  .profile-info > .profile-biography {
+    margin-top: 2em;
   }
 }
 

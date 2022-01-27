@@ -29,3 +29,12 @@ CREATE TABLE gkey
   gkey_value VARCHAR(255) NOT NULL,
   status BOOLEAN default false
 );
+CREATE TABLE profile
+(
+  profile_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id uuid REFERENCES users(user_id),
+  name VARCHAR(255) DEFAULT '',
+  second_name VARCHAR(255) DEFAULT '',
+  avatar_url TEXT DEFAULT '',
+  birthday TIMESTAMP 
+);

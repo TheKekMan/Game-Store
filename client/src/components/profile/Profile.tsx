@@ -15,10 +15,16 @@ import {
   Paper,
 } from "../../mui";
 import { RootState } from "../../reducers";
+import moment from "moment";
 
 const Profile = () => {
   const keys = useSelector((state: RootState) => state.cart.cart);
+  const user = useSelector((state: RootState) => state.auth.user);
+  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
   const { t } = useTranslation();
+  let gamesOwned: number = keys.filter(
+    (item: any) => item.status === true
+  ).length;
 
   return (
     <Box className="profile" sx={{ textAlign: "left" }}>
@@ -26,15 +32,26 @@ const Profile = () => {
         <Avatar
           variant="rounded"
           sx={{ width: 200, height: 200 }}
-          src="https://i.pravatar.cc/150?img=6"
+          src={userInfo.avatar}
         ></Avatar>
         <Divider orientation="vertical" flexItem />
-        <Stack spacing={2}>
-          <Typography>Email: </Typography>
-          <Typography>{t("profile.name")}: </Typography>
-          <Typography>{t("profile.secondName")}: </Typography>
-          <Typography>{t("profile.dateOfBirth")}: </Typography>
-          <Typography>{t("profile.gamesOwned")}: </Typography>
+        <Stack spacing={2} className="profile-biography">
+          <Typography>
+            <b>Email:</b> {user.email}
+          </Typography>
+          <Typography>
+            <b>{t("profile.name")}:</b> {userInfo.name}
+          </Typography>
+          <Typography>
+            <b>{t("profile.secondName")}:</b> {userInfo.second_name}
+          </Typography>
+          <Typography>
+            <b>{t("profile.dateOfBirth")}:</b>{" "}
+            {moment(userInfo.birthday).format("ll")}
+          </Typography>
+          <Typography>
+            <b>{t("profile.gamesOwned")}:</b> {gamesOwned}
+          </Typography>
         </Stack>
       </Box>
       <hr />
