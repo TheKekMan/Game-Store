@@ -1,4 +1,5 @@
 export { createTheme, ThemeProvider } from "@mui/material/styles";
+export { default as EditIcon } from "@mui/icons-material/Edit";
 export { default as AlertMUI } from "@mui/material/Alert";
 export { default as Avatar } from "@mui/material/Avatar";
 export { default as Box } from "@mui/material/Box";

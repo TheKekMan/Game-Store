@@ -53,6 +53,7 @@
         "gamesOwned": "Game keys owned",
         "purchasedGames": "Purchased games",
         "gameTitle": "Title",
-        "gameKey": "Game key"
+        "gameKey": "Game key",
+        "editProfile": "Edit Profile"
     }
   }

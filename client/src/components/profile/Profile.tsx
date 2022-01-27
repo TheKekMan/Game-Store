@@ -5,7 +5,9 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   Avatar,
+  Button,
   Divider,
+  EditIcon,
   TableBody,
   TableCell,
   TableContainer,
@@ -53,6 +55,19 @@ const Profile = () => {
             <b>{t("profile.gamesOwned")}:</b> {gamesOwned}
           </Typography>
         </Stack>
+        <Box
+          sx={{
+            justifySelf: "end",
+            marginLeft: "auto",
+            marginTop: "1em",
+            display: "flex",
+            flexDirection: "column-reverse",
+          }}
+        >
+          <Button color="info" variant="contained" startIcon={<EditIcon />}>
+            {t("profile.editProfile")}
+          </Button>
+        </Box>
       </Box>
       <hr />
       <Box className="profile-keys">

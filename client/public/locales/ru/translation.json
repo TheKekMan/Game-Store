@@ -53,6 +53,7 @@
         "gamesOwned": "Ключей игр приобретено",
         "purchasedGames": "Приобретенные игры",
         "gameTitle": "Название",
-        "gameKey": "Ключ игры"
+        "gameKey": "Ключ игры",
+        "editProfile": "Редактировать профиль"
     }
   }
