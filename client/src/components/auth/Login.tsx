@@ -62,6 +62,7 @@ export const Login = ({ login, isAuthenticated }: Props) => {
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            color="info"
           />
           {formik.touched.email && formik.errors.email ? (
             <FormHelperText className="invalid-feedback">
@@ -77,6 +78,7 @@ export const Login = ({ login, isAuthenticated }: Props) => {
             value={formik.values.password}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            color="info"
           />
           {formik.touched.password && formik.errors.password ? (
             <FormHelperText className="invalid-feedback">

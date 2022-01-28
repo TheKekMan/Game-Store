@@ -45,5 +45,15 @@
         "min8": "At least 8 characters.",
         "max20": "No more than 20 characters",
         "dblPassword": "Password mismatch"
+    },
+    "profile": {
+        "name": "Name",
+        "secondName": "Second name",
+        "dateOfBirth": "Date of birth",
+        "gamesOwned": "Game keys owned",
+        "purchasedGames": "Purchased games",
+        "gameTitle": "Title",
+        "gameKey": "Game key",
+        "editProfile": "Edit Profile"
     }
   }

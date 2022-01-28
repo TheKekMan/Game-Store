@@ -129,9 +129,9 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
               >
                 {games.game.media.map((item: any, index: React.Key) =>
                   item.includes("youtube") ? (
-                    <Video url={item} />
+                    <Video key={index} url={item} />
                   ) : (
-                    <Box className="details-poster">
+                    <Box key={index} className="details-poster">
                       <img src={item} alt="" />
                     </Box>
                   )
@@ -213,7 +213,6 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
               )}
             </Box>
             <Typography variant="h4" component="h2">
-              {" "}
               {t("game.history")}
             </Typography>
             <Line data={data} options={options} />

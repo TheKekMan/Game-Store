@@ -1,24 +1,7 @@
 const pool = require("../db/");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const CryptoJS = require("crypto-js");
 const dotenv = require("dotenv");
 
 dotenv.config();
-
-function randomKeyGenerator() {
-  const letters = "abcdefghijklmnopqrstuvwxyz0123456789";
-  let word = "";
-
-  for (let i = 0; i < 15; i++) {
-    word += letters.charAt(Math.floor(Math.random() * letters.length));
-  }
-
-  this.randomKey =
-    word.substr(0, 5) + "-" + word.substr(5, 5) + "-" + word.substr(10, 5);
-
-  return this.randomKey.toUpperCase();
-}
 
 /**
  * Function to get user details
@@ -29,15 +12,34 @@ function randomKeyGenerator() {
 const getUserDetails = async (req, res) => {
   try {
     const user = await pool.query(
-      "SELECT email_address FROM user WHERE user_id = $1",
+      "SELECT name, second_name, avatar_url, birthday FROM profile WHERE user_id = $1",
       [req.user.id.id]
     );
-    console.log(user.rows[0].email_addrress);
-    return res.status(200).json(user.rows[0].email_addrress);
+    if (user.rowCount === 0) {
+      const emptyPayload = {
+        user: {
+          name: "",
+          second_name: " ",
+          avatar:
+            "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png",
+          birthday: "01.01.1970",
+        },
+      };
+      res.json(emptyPayload);
+    } else {
+      const payload = {
+        user: {
+          name: user.rows[0].name,
+          second_name: user.rows[0].second_name,
+          avatar: user.rows[0].avatar_url,
+          birthday: user.rows[0].birthday,
+        },
+      };
+      res.json(payload);
+    }
   } catch (err) {
-    return res
-      .status(500)
-      .json({ message: "There was an error. Please try again later" });
+    console.error(err.message);
+    res.status(500).send("Server Error");
   }
 };
 

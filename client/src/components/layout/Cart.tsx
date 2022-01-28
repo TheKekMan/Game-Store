@@ -51,7 +51,12 @@ const Cart = () => {
       </Fragment>
     );
   } else {
-    const cart = carts;
+    const cart: any = [];
+    carts.forEach((item: any) => {
+      if (item.status === false) {
+        return cart.push(item);
+      }
+    });
     cart.map((item: { status: boolean; price: number; discount: number }) =>
       item.status === false
         ? (total += item.price - item.price * item.discount)

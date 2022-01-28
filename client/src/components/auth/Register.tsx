@@ -68,6 +68,7 @@ const Register = ({ register, isAuthenticated }: Props) => {
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
+            color="info"
           />
           {formik.touched.email && formik.errors.email ? (
             <FormHelperText className="invalid-feedback">
@@ -83,6 +84,7 @@ const Register = ({ register, isAuthenticated }: Props) => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
+            color="info"
           />
           {formik.touched.password && formik.errors.password ? (
             <FormHelperText className="invalid-feedback">
@@ -98,6 +100,7 @@ const Register = ({ register, isAuthenticated }: Props) => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.confirmPassword}
+            color="info"
           />
           {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
             <FormHelperText className="invalid-feedback">
