@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   Avatar,
@@ -18,12 +18,20 @@ import {
 } from "../../mui";
 import { RootState } from "../../reducers";
 import moment from "moment";
+import { getUser } from "../../actions/user";
 
 const Profile = () => {
   const keys = useSelector((state: RootState) => state.cart.cart);
   const user = useSelector((state: RootState) => state.auth.user);
-  const userInfo = useSelector((state: RootState) => state.auth.userInfo);
+  const userInfo = useSelector((state: RootState) => state.user.user);
+  console.log(userInfo);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, []);
+
   let gamesOwned: number = keys.filter(
     (item: any) => item.status === true
   ).length;
