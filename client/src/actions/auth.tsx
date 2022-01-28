@@ -6,7 +6,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   USER_LOADED,
-  USER_INFO,
   AUTH_ERROR,
   LOGOUT,
   CART_CLEAR,
@@ -26,11 +25,6 @@ export const loadUser = () => async (dispatch: Dispatch<any>) => {
     dispatch({
       type: USER_LOADED,
       payload: res.data,
-    });
-    const res1 = await axios.get("http://localhost:3000/gamestore/api/user");
-    dispatch({
-      type: USER_INFO,
-      payload: res1.data,
     });
   } catch (err) {
     dispatch({
