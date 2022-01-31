@@ -39,7 +39,7 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(getUser());
-  }, []);
+  }, [dispatch]);
 
   let gamesOwned: number = keys.filter(
     (item: any) => item.status === true
