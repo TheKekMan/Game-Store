@@ -1,5 +1,5 @@
 import { TextFieldProps } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import {
@@ -19,6 +19,10 @@ const ProfileForm = (props: any) => {
   const userInfo = useSelector((state: RootState) => state.user.user);
   const [value, setValue] = useState(new Date(userInfo.birthday));
   const { t } = useTranslation();
+
+  useEffect(() => {
+    setValue(new Date(userInfo.birthday));
+  }, [userInfo.birthday]);
 
   const handleChange = (newValue: any) => {
     setValue(newValue);
