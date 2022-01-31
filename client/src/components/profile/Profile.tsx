@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -19,14 +19,23 @@ import {
 import { RootState } from "../../reducers";
 import moment from "moment";
 import { getUser } from "../../actions/user";
+import ProfileForm from "./ProfileForm";
 
 const Profile = () => {
   const keys = useSelector((state: RootState) => state.cart.cart);
   const user = useSelector((state: RootState) => state.auth.user);
   const userInfo = useSelector((state: RootState) => state.user.user);
-  console.log(userInfo);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     dispatch(getUser());
@@ -64,6 +73,7 @@ const Profile = () => {
           </Typography>
         </Stack>
         <Box
+          className="button"
           sx={{
             justifySelf: "end",
             marginLeft: "auto",
@@ -72,7 +82,12 @@ const Profile = () => {
             flexDirection: "column-reverse",
           }}
         >
-          <Button color="info" variant="contained" startIcon={<EditIcon />}>
+          <Button
+            color="info"
+            variant="contained"
+            onClick={handleClickOpen}
+            startIcon={<EditIcon />}
+          >
             {t("profile.editProfile")}
           </Button>
         </Box>
@@ -112,6 +127,7 @@ const Profile = () => {
           </Table>
         </TableContainer>
       </Box>
+      <ProfileForm open={open} onClose={handleClose} />
     </Box>
   );
 };
