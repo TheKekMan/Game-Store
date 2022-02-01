@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import {
   Container,
   GitHubIcon,
+  IconButton,
   TwitterIcon,
   Typography,
   YouTubeIcon,
@@ -47,9 +48,15 @@ const Footer = () => {
           marginTop: "1em",
         }}
       >
-        <GitHubIcon />
-        <YouTubeIcon />
-        <TwitterIcon />
+        <IconButton>
+          <GitHubIcon />
+        </IconButton>
+        <IconButton>
+          <YouTubeIcon />
+        </IconButton>
+        <IconButton>
+          <TwitterIcon />
+        </IconButton>
       </Container>
     </CustomFooter>
   );
