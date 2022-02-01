@@ -54,6 +54,8 @@
         "purchasedGames": "Purchased games",
         "gameTitle": "Title",
         "gameKey": "Game key",
-        "editProfile": "Edit Profile"
+        "editProfile": "Edit Profile",
+        "submit": "Submit",
+        "cancel": "Cancel"
     }
   }

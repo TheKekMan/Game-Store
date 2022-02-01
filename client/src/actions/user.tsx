@@ -1,6 +1,5 @@
 import axios from "axios";
-import { setAlert } from "./alert";
-import { GET_USER, SET_USER, USER_ERROR } from "./types";
+import { GET_USER, USER_ERROR } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 import { Dispatch } from "redux";
 

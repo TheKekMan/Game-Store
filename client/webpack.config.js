@@ -56,7 +56,7 @@ module.exports = {
   ],
   devServer: {
     proxy: {
-      "/picter/api": {
+      "/gamestore/api": {
         target: "http://localhost:5500",
         changeOrigin: true,
       },
