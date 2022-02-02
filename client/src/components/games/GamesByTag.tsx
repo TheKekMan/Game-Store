@@ -48,8 +48,12 @@ const Games = (props: any) => {
       {games.results.rows && games.results.rows.length > 0 ? (
         <>
           <div className="games-list">
-            {PageGames.map((game: { game_id: React.Key }) => (
-              <GameItem key={game.game_id} game={game} />
+            {PageGames.map((game: { game_id: React.Key }, index) => (
+              <GameItem
+                key={game.game_id}
+                game={game}
+                animationDelay={(index + 1) * 250}
+              />
             ))}
           </div>
           <div className="pagination">

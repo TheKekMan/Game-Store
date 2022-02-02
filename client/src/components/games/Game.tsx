@@ -10,7 +10,7 @@ import { Line } from "react-chartjs-2";
 import { RootState } from "../../reducers";
 import uuid from "uuid";
 import { useTranslation } from "react-i18next";
-import { Box, Typography } from "../../mui";
+import { Box, Typography, Fade } from "../../mui";
 import Carousel from "react-material-ui-carousel";
 import { useTheme } from "@mui/material";
 
@@ -142,76 +142,77 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
                 <img src={games.game.picture} alt="" />
               </Box>
             )}
-
-            <Box className="details-info">
-              <Typography variant="h3" component="h1">
-                {games.game.game_name}
-              </Typography>
-              <Box className="tags">
-                <Link to={`/games/tag/${games.game.genre}`}>
-                  {games.game.genre}
-                </Link>
-              </Box>
-              <Typography component="p">
-                <b>{t("game.desc")}:</b> {games.game.description}{" "}
-              </Typography>
-              <Typography component="p" className="date">
-                <b>{t("game.date")}:</b>{" "}
-                {(games.game.release_date = moment().format("ll"))}
-              </Typography>
-              <Typography component="p">
-                <b>{t("game.dev")}:</b> {games.game.developer}
-              </Typography>
-              {games.game.price > 0 ? (
-                <Box className="price-container-discount">
-                  {games.game.discount > 0 ? (
-                    <Box className="price-container-discount">
-                      <Box component="span" className="discount-amount">
-                        -{games.game.discount * 100}%
+            <Fade in={true} timeout={1000}>
+              <Box className="details-info">
+                <Typography variant="h3" component="h1">
+                  {games.game.game_name}
+                </Typography>
+                <Box className="tags">
+                  <Link to={`/games/tag/${games.game.genre}`}>
+                    {games.game.genre}
+                  </Link>
+                </Box>
+                <Typography component="p">
+                  <b>{t("game.desc")}:</b> {games.game.description}{" "}
+                </Typography>
+                <Typography component="p" className="date">
+                  <b>{t("game.date")}:</b>{" "}
+                  {(games.game.release_date = moment().format("ll"))}
+                </Typography>
+                <Typography component="p">
+                  <b>{t("game.dev")}:</b> {games.game.developer}
+                </Typography>
+                {games.game.price > 0 ? (
+                  <Box className="price-container-discount">
+                    {games.game.discount > 0 ? (
+                      <Box className="price-container-discount">
+                        <Box component="span" className="discount-amount">
+                          -{games.game.discount * 100}%
+                        </Box>
+                        <Box component="span" className="pricediscount">
+                          {formatter.format(games.game.price)}
+                        </Box>
+                        <Box component="span" className="price">
+                          {formatter.format(
+                            games.game.price -
+                              games.game.price * games.game.discount
+                          )}
+                        </Box>
                       </Box>
-                      <Box component="span" className="pricediscount">
+                    ) : (
+                      <Box component="span" className="price">
                         {formatter.format(games.game.price)}
                       </Box>
-                      <Box component="span" className="price">
-                        {formatter.format(
-                          games.game.price -
-                            games.game.price * games.game.discount
-                        )}
-                      </Box>
-                    </Box>
-                  ) : (
-                    <Box component="span" className="price">
-                      {formatter.format(games.game.price)}
-                    </Box>
-                  )}
-                </Box>
-              ) : (
-                <p className="price free">{t("game.free")}</p>
-              )}
+                    )}
+                  </Box>
+                ) : (
+                  <p className="price free">{t("game.free")}</p>
+                )}
 
-              {isAuthenticated ? (
-                <Fragment>
-                  {/* {cartItems.map((item: { gameId: uuid.V4Options }) => {
+                {isAuthenticated ? (
+                  <Fragment>
+                    {/* {cartItems.map((item: { gameId: uuid.V4Options }) => {
                     if (games.game.game_id === item.gameId) {
                       // isAddedToCart = true;
                       return true;
                     }
                   })} */}
-                  <AddToCart
-                    gameid={games.game.game_id}
-                    title={games.game.game_name}
-                    price={games.game.price}
-                    poster={games.game.picture}
-                    discount={games.game.discount}
-                    userid={userid}
-                  />
-                </Fragment>
-              ) : (
-                <Link to="/login" className="btn btn-primary">
-                  {t("game.buttonReg")}
-                </Link>
-              )}
-            </Box>
+                    <AddToCart
+                      gameid={games.game.game_id}
+                      title={games.game.game_name}
+                      price={games.game.price}
+                      poster={games.game.picture}
+                      discount={games.game.discount}
+                      userid={userid}
+                    />
+                  </Fragment>
+                ) : (
+                  <Link to="/login" className="btn btn-primary">
+                    {t("game.buttonReg")}
+                  </Link>
+                )}
+              </Box>
+            </Fade>
             <Typography variant="h4" component="h2">
               {t("game.history")}
             </Typography>
