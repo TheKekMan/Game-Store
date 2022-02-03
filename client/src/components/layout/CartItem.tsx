@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeFromCart } from "../../actions/cart";
-import { Box, Button, Typography } from "../../mui";
+import { Box, Button, Typography, Fade } from "../../mui";
 
 const CartItem = ({ item }: { item: any }) => {
   const dispatch = useDispatch();
@@ -11,15 +11,16 @@ const CartItem = ({ item }: { item: any }) => {
     currency: "RUB",
   });
   return (
-    <Box className="cart-item">
-      <Link className="cart-link" to={`/games/${item.gameid}`}>
-        <img src={item.poster} alt="" />
-      </Link>
-      <Typography>{item.title}</Typography>
-      <Typography component="p" className="price">
-        {formatter.format(item.price - item.price * item.discount)}
-      </Typography>
-      {/* {item.status === true ? (
+    <Fade key={item} in={true} timeout={500}>
+      <Box className="cart-item">
+        <Link className="cart-link" to={`/games/${item.gameid}`}>
+          <img src={item.poster} alt="" />
+        </Link>
+        <Typography>{item.title}</Typography>
+        <Typography component="p" className="price">
+          {formatter.format(item.price - item.price * item.discount)}
+        </Typography>
+        {/* {item.status === true ? (
           <h3>{item.title}</h3>
         ) : (
           <button
@@ -31,16 +32,17 @@ const CartItem = ({ item }: { item: any }) => {
             <i className="fa fa-shopping-basket"></i>
           </button>
         )} */}
-      <Button
-        className="btn btn-danger remove"
-        onClick={() => {
-          dispatch(removeFromCart(item.gkeyid));
-        }}
-        variant="contained"
-      >
-        <i className="far fa-trash-alt"></i>
-      </Button>
-    </Box>
+        <Button
+          className="btn btn-danger remove"
+          onClick={() => {
+            dispatch(removeFromCart(item.gkeyid));
+          }}
+          variant="contained"
+        >
+          <i className="far fa-trash-alt"></i>
+        </Button>
+      </Box>
+    </Fade>
   );
 };
 

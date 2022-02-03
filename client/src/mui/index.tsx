@@ -39,3 +39,6 @@ export { Typography } from "@mui/material";
 export { withStyles } from "@mui/material";
 export { default as AdapterDateFns } from "@mui/lab/AdapterDateFns";
 export { default as LocalizationProvider } from "@mui/lab/LocalizationProvider";
+export { default as Grow } from "@mui/material/Grow";
+export { default as Fade } from "@mui/material/Fade";
+export { default as Collapse } from "@mui/material/Collapse";

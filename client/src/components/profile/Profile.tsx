@@ -8,6 +8,7 @@ import {
   Button,
   Divider,
   EditIcon,
+  Fade,
   TableBody,
   TableCell,
   TableContainer,
@@ -47,51 +48,57 @@ const Profile = () => {
 
   return (
     <Box className="profile" sx={{ textAlign: "left" }}>
-      <Box className="profile-info" sx={{ display: "flex", columnGap: "1em" }}>
-        <Avatar
-          variant="rounded"
-          sx={{ width: 200, height: 200 }}
-          src={userInfo.avatar}
-        ></Avatar>
-        <Divider orientation="vertical" flexItem />
-        <Stack spacing={2} className="profile-biography">
-          <Typography>
-            <b>Email:</b> {user.email}
-          </Typography>
-          <Typography>
-            <b>{t("profile.name")}:</b> {userInfo.name}
-          </Typography>
-          <Typography>
-            <b>{t("profile.secondName")}:</b> {userInfo.second_name}
-          </Typography>
-          <Typography>
-            <b>{t("profile.dateOfBirth")}:</b>{" "}
-            {moment(userInfo.birthday).format("ll")}
-          </Typography>
-          <Typography>
-            <b>{t("profile.gamesOwned")}:</b> {gamesOwned}
-          </Typography>
-        </Stack>
+      <Fade in={true} timeout={1000}>
         <Box
-          className="button"
-          sx={{
-            justifySelf: "end",
-            marginLeft: "auto",
-            marginTop: "1em",
-            display: "flex",
-            flexDirection: "column-reverse",
-          }}
+          className="profile-info"
+          sx={{ display: "flex", columnGap: "1em" }}
         >
-          <Button
-            color="info"
-            variant="contained"
-            onClick={handleClickOpen}
-            startIcon={<EditIcon />}
+          <Avatar
+            variant="rounded"
+            sx={{ width: 200, height: 200 }}
+            src={userInfo.avatar}
+          ></Avatar>
+          <Divider orientation="vertical" flexItem />
+          <Stack spacing={2} className="profile-biography">
+            <Typography>
+              <b>Email:</b> {user.email}
+            </Typography>
+            <Typography>
+              <b>{t("profile.name")}:</b> {userInfo.name}
+            </Typography>
+            <Typography>
+              <b>{t("profile.secondName")}:</b> {userInfo.second_name}
+            </Typography>
+            <Typography>
+              <b>{t("profile.dateOfBirth")}:</b>{" "}
+              {moment(userInfo.birthday).format("ll")}
+            </Typography>
+            <Typography>
+              <b>{t("profile.gamesOwned")}:</b> {gamesOwned}
+            </Typography>
+          </Stack>
+          <Box
+            className="button"
+            sx={{
+              justifySelf: "end",
+              marginLeft: "auto",
+              marginTop: "1em",
+              display: "flex",
+              flexDirection: "column-reverse",
+            }}
           >
-            {t("profile.editProfile")}
-          </Button>
+            <Button
+              color="info"
+              variant="contained"
+              onClick={handleClickOpen}
+              startIcon={<EditIcon />}
+            >
+              {t("profile.editProfile")}
+            </Button>
+          </Box>
         </Box>
-      </Box>
+      </Fade>
+
       <hr />
       <Box className="profile-keys">
         <Typography variant="h4" sx={{ marginBottom: "1em" }}>
@@ -110,17 +117,19 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {keys.map((row: any) =>
+              {keys.map((row: any, index: number) =>
                 row.status ? (
-                  <TableRow
-                    key={row.gkeyid}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      <Link to={`games/${row.gameid}`}>{row.title}</Link>
-                    </TableCell>
-                    <TableCell align="right">{row.value}</TableCell>
-                  </TableRow>
+                  <Fade in={true} timeout={index * 200}>
+                    <TableRow
+                      key={row.gkeyid}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        <Link to={`games/${row.gameid}`}>{row.title}</Link>
+                      </TableCell>
+                      <TableCell align="right">{row.value}</TableCell>
+                    </TableRow>
+                  </Fade>
                 ) : null
               )}
             </TableBody>
