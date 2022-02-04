@@ -58,11 +58,11 @@ const Cart = () => {
       }
     });
     cart.map((item: { status: boolean; price: number; discount: number }) =>
-      item.status === false
+      !item.status
         ? (total += item.price - item.price * item.discount)
         : (total += 0)
     );
-    var formatter = new Intl.NumberFormat("ru-RU", {
+    const formatter = new Intl.NumberFormat("ru-RU", {
       style: "currency",
       currency: "RUB",
     });

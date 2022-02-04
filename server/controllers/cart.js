@@ -23,12 +23,13 @@ function randomKeyGenerator() {
 const addToCart = async (req, res) => {
   const { gameid, title, price, poster, userid } = req.body;
 
+  let hashedRandomkey;
   try {
     const gameCheck = await pool.query(
       "SELECT game_name FROM games WHERE game_id = $1 AND game_name = $2",
       [gameid, title]
     );
-    if (gameCheck.rowCount == 0) {
+    if (gameCheck.rowCount === 0) {
       return res.status(401).json({ message: "Undefined game" });
     }
     const randomkey = randomKeyGenerator();
@@ -98,8 +99,7 @@ const getFromCart = async (req, res) => {
           ).toString(CryptoJS.enc.Utf8))
         : (item.value = null)
     );
-    const decryptCodes = item;
-    const items = decryptCodes.rows;
+    const items = item.rows;
     if (item.rowCount == 0) {
       return res.status(402).json({ message: "No games" });
     }
@@ -153,8 +153,7 @@ const buyFromCart = async (req, res) => {
           ).toString(CryptoJS.enc.Utf8))
         : (item.value = null)
     );
-    const decryptCodes = item;
-    const items = decryptCodes.rows;
+    const items = item.rows;
     if (item.rowCount == 0) {
       return res.status(402).json({ message: "No game" });
     }

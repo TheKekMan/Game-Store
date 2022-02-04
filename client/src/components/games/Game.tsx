@@ -52,7 +52,7 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
   // const cartItems = useSelector((state: RootState) => state.cart.cart);
 
   const labels = () => {
-    var lastmonths = [];
+    let lastmonths = [];
     for (let i = 11; i >= 0; i--) {
       lastmonths.push(moment().subtract(i, "month").format("MMMM"));
     }
@@ -108,7 +108,7 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
     ],
   };
 
-  var formatter = new Intl.NumberFormat("ru-RU", {
+  const formatter = new Intl.NumberFormat("ru-RU", {
     style: "currency",
     currency: "RUB",
   });

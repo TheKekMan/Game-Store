@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Box, Grow, Typography } from "../../mui";
 
-var formatter = new Intl.NumberFormat("ru-RU", {
+const formatter = new Intl.NumberFormat("ru-RU", {
   style: "currency",
   currency: "RUB",
 });

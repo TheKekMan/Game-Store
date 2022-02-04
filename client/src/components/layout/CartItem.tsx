@@ -6,7 +6,7 @@ import { Box, Button, Typography, Fade } from "../../mui";
 
 const CartItem = ({ item }: { item: any }) => {
   const dispatch = useDispatch();
-  var formatter = new Intl.NumberFormat("ru-RU", {
+  const formatter = new Intl.NumberFormat("ru-RU", {
     style: "currency",
     currency: "RUB",
   });

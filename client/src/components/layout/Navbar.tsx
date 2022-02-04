@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { connect, useSelector, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/auth";
 import { getFromCart } from "../../actions/cart";
 import Search from "./Search";
@@ -59,8 +59,7 @@ const Navbar = ({
 
   useEffect(() => {
     if (cart.length !== 0) {
-      const ccart = cart;
-      let count = ccart.length;
+      let count = cart.length;
       dispatch({
         type: CART_ITEM,
         len: count,
@@ -91,7 +90,7 @@ const Navbar = ({
             }
             href="#!"
           >
-            <i className="fas fa-shopping-cart"></i>
+            <i className="fas fa-shopping-cart" />
             <span className="cart-items-no">
               {cart.filter((item: any) => item.status === false).length}
             </span>
@@ -101,7 +100,7 @@ const Navbar = ({
 
       <li>
         <a onClick={logout} href="#!">
-          <i className="fas fa-sign-out-alt"></i>
+          <i className="fas fa-sign-out-alt" />
         </a>
       </li>
       <li>
@@ -178,7 +177,7 @@ const Navbar = ({
     >
       <div className="home-link">
         <Link to="/">
-          <i className="fas fa-home"></i>
+          <i className="fas fa-home" />
         </Link>
       </div>
       <Search />

@@ -16,7 +16,7 @@ import {
 import { RootState } from "../../reducers";
 
 const ProfileForm = (props: any) => {
-  const userInfo = useSelector((state: RootState) => state.user.user);
+  const userInfo = props.userInfo;
   const [value, setValue] = useState(new Date(userInfo.birthday));
   const { t } = useTranslation();
 
