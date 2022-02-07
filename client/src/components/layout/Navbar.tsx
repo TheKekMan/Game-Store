@@ -79,26 +79,24 @@ const Navbar = ({
           )}
         </Link>
       </li>
-
-      {cart.filter((item: any) => item.status === false).length > 0 ? (
-        <li>
-          <a
-            className="cart-toggle"
-            onClick={() =>
-              document
-                .querySelector(".cart-container")!
-                .classList.toggle("is-open")
-            }
-            href="#!"
-          >
-            <i className="fas fa-shopping-cart"></i>
+      <li>
+        <a
+          className="cart-toggle"
+          onClick={() =>
+            document
+              .querySelector(".cart-container")!
+              .classList.toggle("is-open")
+          }
+          href="#!"
+        >
+          <i className="fas fa-shopping-cart"></i>
+          {cart.filter((item: any) => item.status === false).length > 0 ? (
             <span className="cart-items-no">
               {cart.filter((item: any) => item.status === false).length}
             </span>
-          </a>
-        </li>
-      ) : null}
-
+          ) : null}
+        </a>
+      </li>
       <li>
         <a onClick={logout} href="#!">
           <i className="fas fa-sign-out-alt"></i>

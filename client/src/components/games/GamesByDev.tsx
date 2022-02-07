@@ -7,7 +7,6 @@ import { RootState } from "../../reducers";
 import { useTranslation } from "react-i18next";
 import { Pagination, Stack, Typography } from "../../mui";
 
-// custom search by tag Hook
 const useSearch = (tag: string) => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -17,7 +16,7 @@ const useSearch = (tag: string) => {
 
 const Games = (props: any) => {
   const { t } = useTranslation();
-  const tag = props.match.params.tag || "";
+  const tag = "шутер";
   useSearch(tag);
   const games = useSelector((state: RootState) => state.games);
   const [width, setWidth] = useState(window.innerWidth);

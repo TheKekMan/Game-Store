@@ -42,3 +42,4 @@ export { default as LocalizationProvider } from "@mui/lab/LocalizationProvider";
 export { default as Grow } from "@mui/material/Grow";
 export { default as Fade } from "@mui/material/Fade";
 export { default as Collapse } from "@mui/material/Collapse";
+export { default as Link } from "@mui/material/Link";

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 // import Landing from './components/layout/Landing';
 // import Games from './components/games/Games';
-import Cart from "./components/layout/Cart";
+import Cart from "./components/cart/Cart";
 import Routes from "./components/routing/Routes";
 // Redux:
 import { useDispatch } from "react-redux";

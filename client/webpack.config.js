@@ -62,5 +62,6 @@ module.exports = {
       },
     },
     historyApiFallback: true,
+    allowedHosts: "all"
   },
 };

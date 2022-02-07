@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeFromCart } from "../../actions/cart";
+import { buyFromCart, removeFromCart } from "../../actions/cart";
 import { Box, Button, Typography, Fade } from "../../mui";
 
 const CartItem = ({ item }: { item: any }) => {
@@ -9,6 +9,11 @@ const CartItem = ({ item }: { item: any }) => {
   var formatter = new Intl.NumberFormat("ru-RU", {
     style: "currency",
     currency: "RUB",
+  });
+  useEffect(() => {
+    if (item.price === "0.00") {
+      dispatch(buyFromCart(item.gkeyid));
+    }
   });
   return (
     <Fade key={item} in={true} timeout={500}>
@@ -20,18 +25,6 @@ const CartItem = ({ item }: { item: any }) => {
         <Typography component="p" className="price">
           {formatter.format(item.price - item.price * item.discount)}
         </Typography>
-        {/* {item.status === true ? (
-          <h3>{item.title}</h3>
-        ) : (
-          <button
-            className="btn btn-success success"
-            onClick={() => {
-              dispatch(buyFromCart(item.gkeyid));
-            }}
-          >
-            <i className="fa fa-shopping-basket"></i>
-          </button>
-        )} */}
         <Button
           className="btn btn-danger remove"
           onClick={() => {
