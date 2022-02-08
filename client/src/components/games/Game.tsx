@@ -196,12 +196,6 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
 
                 {isAuthenticated ? (
                   <Fragment>
-                    {/* {cartItems.map((item: { gameId: uuid.V4Options }) => {
-                    if (games.game.game_id === item.gameId) {
-                      // isAddedToCart = true;
-                      return true;
-                    }
-                  })} */}
                     <AddToCart
                       gameid={games.game.game_id}
                       title={games.game.game_name}

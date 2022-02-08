@@ -67,7 +67,7 @@ const Profile = () => {
               <b>{t("profile.name")}:</b> {userInfo.name}
             </Typography>
             <Typography>
-              <b>{t("profile.secondName")}:</b> {userInfo.second_name}
+              <b>{t("profile.secondName")}:</b> {userInfo.secondName}
             </Typography>
             <Typography>
               <b>{t("profile.dateOfBirth")}:</b>{" "}
