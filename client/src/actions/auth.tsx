@@ -85,21 +85,6 @@ export const checkout =
     }
   };
 
-// User Details
-export const getUserDetails = () => async (dispatch: Dispatch<any>) => {
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
-  }
-  try {
-    const res = await axios.get("gamestore/api/user");
-    const useremail = res.data;
-    console.log(useremail);
-  } catch (err) {
-    dispatch({
-      type: AUTH_ERROR,
-    });
-  }
-};
 
 // Login User:
 export const login =

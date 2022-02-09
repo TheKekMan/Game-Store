@@ -119,9 +119,8 @@ const Profile = () => {
             <TableBody>
               {keys.map((row: any, index: number) =>
                 row.status ? (
-                  <Fade in={true} timeout={index * 200}>
+                  <Fade in={true} timeout={index * 200} key={row.gkeyid}>
                     <TableRow
-                      key={row.gkeyid}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">
@@ -136,7 +135,7 @@ const Profile = () => {
           </Table>
         </TableContainer>
       </Box>
-      <ProfileForm open={open} onClose={handleClose} />
+      <ProfileForm open={open} onClose={handleClose} userInfo={userInfo} />
     </Box>
   );
 };

@@ -19,7 +19,7 @@ const getUserDetails = async (req, res) => {
       const emptyPayload = {
         user: {
           name: "",
-          second_name: " ",
+          secondName: " ",
           avatar:
             "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png",
           birthday: "01.01.1970",
@@ -30,7 +30,7 @@ const getUserDetails = async (req, res) => {
       const payload = {
         user: {
           name: user.rows[0].name,
-          second_name: user.rows[0].second_name,
+          secondName: user.rows[0].second_name,
           avatar: user.rows[0].avatar_url,
           birthday: user.rows[0].birthday,
         },

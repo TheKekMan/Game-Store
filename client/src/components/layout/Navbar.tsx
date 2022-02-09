@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import moment from "moment";
 import { Box, Button, Menu, MenuItem } from "../../mui";
 
+
 interface Props {
   auth: {
     isAuthenticated: boolean;
@@ -45,6 +46,8 @@ const Navbar = ({
       handleClose();
     }
   };
+  moment.locale(language);
+
   const open = Boolean(anchorEl);
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -59,8 +62,7 @@ const Navbar = ({
 
   useEffect(() => {
     if (cart.length !== 0) {
-      const ccart = cart;
-      let count = ccart.length;
+      let count = cart.length;
       dispatch({
         type: CART_ITEM,
         len: count,
