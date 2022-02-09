@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
+import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Box, Fade, Stack, Typography } from "../../mui";
 import GamesByDev from "../games/GamesByDev";
+import uuid from "uuid";
+import { getDev } from "../../actions/dev";
+import { RootState } from "../../reducers";
 
-const DevPage = () => {
+const DevPage = (props: { match: { params: { id: uuid.V4Options } } }) => {
+  const dev = useSelector((state: RootState) => state.devs.dev);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getDev(props.match.params.id));
+  }, []);
   const { t } = useTranslation();
   return (
     <Box className="dev-profile" sx={{ textAlign: "left" }}>
@@ -16,19 +24,11 @@ const DevPage = () => {
           <Avatar
             variant="rounded"
             sx={{ width: 200, height: 200 }}
-            src="https://avatars.mds.yandex.net/get-entity_search/372208/295256967/S122x122Fit_2x"
-          ></Avatar>
+            src={dev.devUrl}
+          />
           <Stack spacing={2} className="dev-profile-biography">
-            <Typography variant="h3">Название</Typography>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum
-            </Typography>
+            <Typography variant="h3">{dev.devName}</Typography>
+            <Typography>{dev.devDescription}</Typography>
           </Stack>
         </Box>
       </Fade>
@@ -36,7 +36,7 @@ const DevPage = () => {
       <Typography variant="h4" sx={{ marginBottom: "1rem" }}>
         {t("dev.gamesByDev")}:
       </Typography>
-      <GamesByDev></GamesByDev>
+      <GamesByDev devId={props.match.params.id}></GamesByDev>
     </Box>
   );
 };

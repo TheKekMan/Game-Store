@@ -79,3 +79,27 @@ export const getGamesByTag =
       }
     }
   };
+
+// Get games by dev
+export const getGamesByDev =
+  (devId: uuid.V4Options) => async (dispatch: Dispatch<any>) => {
+    dispatch({ type: CLEAR_GAMES });
+    dispatch({ type: CLEAR_GAME });
+    try {
+      const res = await axios.get(
+        `http://localhost:3000/gamestore/api/games/dev/${devId}`
+      );
+      dispatch({
+        type: GET_GAMES,
+        payload: res.data,
+      });
+    } catch (err) {
+      if (err instanceof Error) {
+        console.log(err);
+        dispatch({
+          type: GAMES_ERROR,
+          payload: { msg: err.message, status: err },
+        });
+      }
+    }
+  };

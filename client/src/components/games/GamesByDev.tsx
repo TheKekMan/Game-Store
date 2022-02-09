@@ -2,22 +2,21 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import GameItem from "./GameItem";
 import Spinner from "../layout/Spinner";
-import { getGamesByTag } from "../../actions/games";
+import { getGamesByDev } from "../../actions/games";
 import { RootState } from "../../reducers";
 import { useTranslation } from "react-i18next";
 import { Pagination, Stack, Typography } from "../../mui";
+import uuid from "uuid";
 
-const useSearch = (tag: string) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getGamesByTag(tag));
-  }, [dispatch, tag]);
-};
-
-const Games = (props: any) => {
+const GamesByDev = (props: any) => {
   const { t } = useTranslation();
-  const tag = "шутер";
-  useSearch(tag);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getGamesByDev(props.devId));
+  }, [dispatch, props.devId]);
+  console.log(props);
+
   const games = useSelector((state: RootState) => state.games);
   const [width, setWidth] = useState(window.innerWidth);
   const [page, setPage] = useState(1);
@@ -73,4 +72,4 @@ const Games = (props: any) => {
   );
 };
 
-export default Games;
+export default GamesByDev;

@@ -7,7 +7,6 @@ import { RootState } from "../../reducers";
 import { useTranslation } from "react-i18next";
 import { Pagination, Stack, Typography } from "../../mui";
 
-// custom search by tag Hook
 const useSearch = (tag: string) => {
   const dispatch = useDispatch();
   useEffect(() => {
