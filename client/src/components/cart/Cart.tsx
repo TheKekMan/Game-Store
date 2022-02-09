@@ -89,7 +89,7 @@ const Cart = () => {
                 ) : null
               )
             ) : (
-              <Typography variant="h5">пусто</Typography>
+              <Typography variant="h5">{t("cart.empty")}</Typography>
             )}
           </Box>
           <hr />

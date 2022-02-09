@@ -1,7 +1,8 @@
 {
     "cart": {
       "total": "Total",
-      "code": "CODE"
+      "code": "CODE",
+      "empty": "Empty"
     },
     "notFound": {
         "title": "Page not found",
@@ -57,5 +58,8 @@
         "editProfile": "Edit Profile",
         "submit": "Submit",
         "cancel": "Cancel"
+    },
+    "dev": {
+        "gamesByDev": "Games from this developer"
     }
   }

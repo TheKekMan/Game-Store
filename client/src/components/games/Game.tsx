@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getGameById } from "../../actions/games";
 import Spinner from "../layout/Spinner";
-import AddToCart from "./AddToCart";
+import AddToCart from "../layout/AddToCart";
 import moment from "moment";
 import "moment/locale/ru";
 import { Line } from "react-chartjs-2";
@@ -11,6 +11,7 @@ import { RootState } from "../../reducers";
 import uuid from "uuid";
 import { useTranslation } from "react-i18next";
 import { Box, Typography, Fade } from "../../mui";
+import { Link as MLink } from "../../mui";
 import Carousel from "react-material-ui-carousel";
 import { useTheme } from "@mui/material";
 
@@ -160,8 +161,12 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
                   {(games.game.release_date = moment().format("ll"))}
                 </Typography>
                 <Typography component="p">
-                  <b>{t("game.dev")}:</b> {games.game.developer}
+                  <b>{t("game.dev")}: </b>
+                  <MLink underline="hover" color="#0078f2" href={`/devs/${1}`}>
+                    {games.game.developer}
+                  </MLink>
                 </Typography>
+
                 {games.game.price > 0 ? (
                   <Box className="price-container-discount">
                     {games.game.discount > 0 ? (
@@ -191,12 +196,6 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
 
                 {isAuthenticated ? (
                   <Fragment>
-                    {/* {cartItems.map((item: { gameId: uuid.V4Options }) => {
-                    if (games.game.game_id === item.gameId) {
-                      // isAddedToCart = true;
-                      return true;
-                    }
-                  })} */}
                     <AddToCart
                       gameid={games.game.game_id}
                       title={games.game.game_name}

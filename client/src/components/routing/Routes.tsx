@@ -11,13 +11,11 @@ import Game from "../games/Game";
 import ReactDOM from "react-dom";
 import { Box } from "../../mui";
 import Profile from "../profile/Profile";
+import DevPage from "../devs/DevPage";
 
 // TODO:
 // import Dashboard from '../dashboard/Dashboard';
 // import CreateProfile from '../profile-forms/CreateProfile';
-// import EditProfile from '../profile-forms/EditProfile';
-// import AddExperience from '../profile-forms/AddExperience';
-// import AddEducation from '../profile-forms/AddEducation';
 // import Profiles from '../profiles/Profiles';
 // import Posts from '../posts/Posts';
 // import Post from '../post/Post';
@@ -34,11 +32,8 @@ const Routes = () => {
           <Route exact path="/games/search/:query" component={Games} />
           <Route exact path="/games/tag/:tag" component={GamesByTag} />
           <Route exact path="/games/:id" component={Game} />
+          <Route exact path="/devs/:id" component={DevPage} />
           <PrivateRoute exact path="/profile" component={Profile} />
-          {/* <PrivateRoute exact path='/add-experience' component={AddExperience} /> */}
-          {/* <PrivateRoute exact path='/add-education' component={AddEducation} /> */}
-          {/* <PrivateRoute exact path='/posts' component={Posts} /> */}
-          {/* <PrivateRoute exact path='/posts/:id' component={Post} /> */}
           <Route component={NotFound} />
         </Switch>
       </>
