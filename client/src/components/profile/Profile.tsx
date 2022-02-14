@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, styled, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +21,14 @@ import { RootState } from "../../reducers";
 import moment from "moment";
 import { getUser } from "../../actions/user";
 import ProfileForm from "./ProfileForm";
+import { setAlert } from "../../actions/alert";
+
+const CustomRow = styled(TableRow)(({ theme }) => ({
+  "&:hover": {
+    cursor: "pointer",
+    backgroundColor: theme.palette.secondary.main,
+  },
+}));
 
 const Profile = () => {
   const keys = useSelector((state: RootState) => state.cart.cart);
@@ -120,14 +128,18 @@ const Profile = () => {
               {keys.map((row: any, index: number) =>
                 row.status ? (
                   <Fade in={true} timeout={index * 200} key={row.gkeyid}>
-                    <TableRow
+                    <CustomRow
+                      onClick={() => {
+                        navigator.clipboard.writeText(row.value);
+                        dispatch(setAlert(t("profile.copyCode"), "success"));
+                      }}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">
                         <Link to={`games/${row.gameid}`}>{row.title}</Link>
                       </TableCell>
                       <TableCell align="right">{row.value}</TableCell>
-                    </TableRow>
+                    </CustomRow>
                   </Fade>
                 ) : null
               )}

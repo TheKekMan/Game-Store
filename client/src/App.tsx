@@ -64,7 +64,7 @@ const App = () => {
         main: "#121212",
       },
       secondary: {
-        main: "#202020",
+        main: "#2d2d2d",
       },
       text: {
         primary: "#FFFFFF",

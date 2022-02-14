@@ -15,7 +15,6 @@ const GamesByDev = (props: any) => {
   useEffect(() => {
     dispatch(getGamesByDev(props.devId));
   }, [dispatch, props.devId]);
-  console.log(props);
 
   const games = useSelector((state: RootState) => state.games);
   const [width, setWidth] = useState(window.innerWidth);
