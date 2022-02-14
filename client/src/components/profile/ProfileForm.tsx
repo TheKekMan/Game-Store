@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AdapterDateFns,
+  Box,
   Button,
   DesktopDatePicker,
   Dialog,
@@ -24,11 +25,11 @@ const ProfileForm = (props: any) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  useEffect(()=>{
+  useEffect(() => {
     setName(userInfo.name);
     setSecondName(userInfo.secondName);
     setBirthday(userInfo.birthday);
-  } , [userInfo])
+  }, [userInfo]);
 
   const onChangeName = (e: any) => {
     setName(e.target.value);
@@ -78,23 +79,44 @@ const ProfileForm = (props: any) => {
             color="info"
             value={secondName}
           />
-          <DesktopDatePicker
-            label={t("profile.dateOfBirth")}
-            inputFormat="dd/MM/yyyy"
-            onChange={(newValue) => {
-              setBirthday(newValue);
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "flex-row",
+              justifyContent: "space-between",
+              gap: "1rem",
             }}
-            value={birthday}
-            renderInput={(params: TextFieldProps) => (
-              <TextField
-                id="birthday"
-                color="info"
-                value={birthday}
-                {...params}
-                sx={{ marginTop: "8px", marginBottom: "4px" }}
-              />
-            )}
-          />
+          >
+            <DesktopDatePicker
+              label={t("profile.dateOfBirth")}
+              inputFormat="dd/MM/yyyy"
+              onChange={(newValue) => {
+                setBirthday(newValue);
+              }}
+              value={birthday}
+              renderInput={(params: TextFieldProps) => (
+                <TextField
+                  id="birthday"
+                  color="info"
+                  value={birthday}
+                  {...params}
+                  sx={{ marginTop: "8px", marginBottom: "4px" }}
+                />
+              )}
+            />
+            <TextField
+              margin="dense"
+              id="image"
+              type="file"
+              fullWidth
+              variant="outlined"
+              color="info"
+              label={t("profile.uploadAvatar")}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </Box>
         </DialogContent>
         <DialogActions>
           <Button onClick={props.onClose} color="error">

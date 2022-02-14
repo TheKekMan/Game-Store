@@ -58,7 +58,8 @@
         "editProfile": "Edit Profile",
         "submit": "Submit",
         "cancel": "Cancel",
-        "copyCode": "Copied to Clipboard"
+        "copyCode": "Copied to Clipboard",
+        "uploadAvatar": "Upload avatar"
     },
     "dev": {
         "gamesByDev": "Games from this developer"
