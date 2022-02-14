@@ -114,7 +114,7 @@ const Register = ({ register, isAuthenticated }: Props) => {
       </form>
       <Typography component="p" className="my-1 login-redirect">
         {t("register.haveAnAccount")}{" "}
-        <Link to="/login">{t("register.button")}</Link>
+        <Link to="/login">{t("login.title")}</Link>
       </Typography>
     </Fragment>
   );
