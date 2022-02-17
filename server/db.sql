@@ -9,7 +9,7 @@ CREATE TABLE games
   picture TEXT NOT NULL,
   price DECIMAL(20,2) NOT NULL,
   price_history FLOAT[] NOT NULL,
-  developer TEXT NOT NULL,
+  developer uuid REFERENCES dev_profile(dev_profile_id) ON DELETE CASCADE,
   discount FLOAT default 0,
   media TEXT[] default NULL
 
@@ -37,4 +37,11 @@ CREATE TABLE profile
   second_name VARCHAR(255) DEFAULT '',
   avatar_url TEXT DEFAULT '',
   birthday TIMESTAMP 
+);
+CREATE TABLE dev_profile
+(
+  dev_profile_id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  dev_name VARCHAR(255) NOT NULL,
+  dev_url TEXT NOT NULL,
+  dev_description TEXT NOT NULL,
 );

@@ -162,8 +162,8 @@ const Game = (props: { match: { params: { id: uuid.V4Options } } }): any => {
                 </Typography>
                 <Typography component="p">
                   <b>{t("game.dev")}: </b>
-                  <MLink underline="hover" color="#0078f2" href={`/devs/${1}`}>
-                    {games.game.developer}
+                  <MLink underline="hover" color="#0078f2" href={`/devs/${games.game.developer}`}>
+                    {games.game.developer_name}
                   </MLink>
                 </Typography>
 

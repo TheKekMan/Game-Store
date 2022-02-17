@@ -57,7 +57,9 @@
         "gameKey": "Game key",
         "editProfile": "Edit Profile",
         "submit": "Submit",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "copyCode": "Copied to Clipboard",
+        "uploadAvatar": "Upload avatar"
     },
     "dev": {
         "gamesByDev": "Games from this developer"
