@@ -134,7 +134,7 @@ const Cart = () => {
                     transactionInfo: {
                       totalPriceStatus: "FINAL",
                       totalPriceLabel: "Total",
-                      totalPrice: `${total}`,
+                      totalPrice: `${total.toFixed(2)}`,
                       currencyCode: "RUB",
                       countryCode: "RU",
                     },

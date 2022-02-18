@@ -1,7 +1,4 @@
-const pool = require("../db/");
-const dotenv = require("dotenv");
-
-dotenv.config();
+const pool = require("../db");
 
 /**
  * Function to get user details

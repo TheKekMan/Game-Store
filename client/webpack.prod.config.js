@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 
 module.exports = () => {
   let env = dotenv.config({
-    path: Path.join(__dirname, "../") + ".env",
+    path: Path.join(__dirname, "/") + ".env",
   }).parsed;
   if (!env) {
     env = dotenv.config({
@@ -25,7 +25,7 @@ module.exports = () => {
     output: {
       path: Path.resolve(__dirname, "dist"),
       filename: "index_bundle.js",
-      publicPath: "/",
+      publicPath: "",
     },
     module: {
       rules: [
@@ -65,23 +65,12 @@ module.exports = () => {
         },
       ],
     },
-    mode: "development",
+    mode: "production",
     plugins: [
       new HtmlWebpack({
         template: "./public/index.html",
       }),
       new webpack.DefinePlugin(envKeys),
     ],
-    devServer: {
-      port: 3000,
-      proxy: {
-        "/gamestore/api": {
-          target: process.env.REACT_APP_SERVER_URI,
-          changeOrigin: true,
-        },
-      },
-      historyApiFallback: true,
-      allowedHosts: "all",
-    },
   };
 };

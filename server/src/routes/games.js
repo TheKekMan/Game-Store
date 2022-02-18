@@ -1,5 +1,5 @@
 const Router = require("express").Router();
-const pool = require("../db/");
+const pool = require("../db");
 // const {
 //   getUserPosts,
 // } = require('../controllers/post')

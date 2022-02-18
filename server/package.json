@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "nodemon app.js",
+    "dev": "nodemon src/app.js",
+    "start": "nodemon --exec babel-node lib/app.js",
+    "build": "babel src --out-dir lib",
     "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
@@ -27,5 +28,10 @@
     "nodemon": "^2.0.2",
     "pg": "^8.0.0",
     "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0"
   }
 }

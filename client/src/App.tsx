@@ -14,6 +14,7 @@ import "./css/App.css";
 import "./css/Games.css";
 import "./css/Cart.css";
 import "./css/Search.css";
+import "./css/Devs.css";
 import Spinner from "./components/layout/Spinner";
 import Footer from "./components/layout/Footer";
 import { createTheme, DarkModeIcon, ThemeProvider, IconButton } from "./mui";

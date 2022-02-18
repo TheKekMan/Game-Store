@@ -9,7 +9,6 @@ import {
 import axios from "axios";
 import { Dispatch } from "redux";
 import uuid from "uuid";
-
 // Get games
 export const getGames = (query: any) => async (dispatch: Dispatch<any>) => {
   dispatch({ type: CLEAR_GAMES });
@@ -17,9 +16,11 @@ export const getGames = (query: any) => async (dispatch: Dispatch<any>) => {
   try {
     const res = query
       ? await axios.get(
-          `http://localhost:3000/gamestore/api/games/search/${query}`
+          `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/games/search/${query}`
         )
-      : await axios.get(`http://localhost:3000/gamestore/api/games/`);
+      : await axios.get(
+          `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/games/`
+        );
     dispatch({
       type: GET_GAMES,
       payload: res.data,
@@ -42,7 +43,7 @@ export const getGameById =
     dispatch({ type: CLEAR_DEV });
     try {
       const res = await axios.get(
-        `http://localhost:3000/gamestore/api/games/${gameId}`
+        `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/games/${gameId}`
       );
       dispatch({
         type: GET_GAME,
@@ -63,7 +64,7 @@ export const getGamesByTag =
     dispatch({ type: CLEAR_GAME });
     try {
       const res = await axios.get(
-        `http://localhost:3000/gamestore/api/games/tag/${gameTag}`
+        `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/games/tag/${gameTag}`
       );
       dispatch({
         type: GET_GAMES,
@@ -87,7 +88,7 @@ export const getGamesByDev =
     dispatch({ type: CLEAR_GAME });
     try {
       const res = await axios.get(
-        `http://localhost:3000/gamestore/api/games/dev/${devId}`
+        `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/games/dev/${devId}`
       );
       dispatch({
         type: GET_GAMES,

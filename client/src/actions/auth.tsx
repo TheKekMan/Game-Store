@@ -20,7 +20,7 @@ export const loadUser = () => async (dispatch: Dispatch<any>) => {
   }
   try {
     const res = await axios.get(
-      "http://localhost:3000/gamestore/api/auth/auth"
+      `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/auth/auth`
     );
     dispatch({
       type: USER_LOADED,
@@ -45,7 +45,11 @@ export const register =
     const body = JSON.stringify({ email, password });
 
     try {
-      const res = await axios.post("gamestore/api/auth/register", body, config);
+      const res = await axios.post(
+        `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/auth/register`,
+        body,
+        config
+      );
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data,
@@ -74,7 +78,11 @@ export const checkout =
     const body = JSON.stringify({ gamesBought: itemsBought });
 
     try {
-      const res = await axios.put("gamestore/api/auth/checkout", body, config);
+      const res = await axios.put(
+        `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/auth/checkout`,
+        body,
+        config
+      );
       dispatch({ type: CART_CLEAR });
       document.querySelector(".cart-container")!.classList.remove("is-open");
       console.log(res);
@@ -84,7 +92,6 @@ export const checkout =
       dispatch({ type: AUTH_ERROR }); // ?
     }
   };
-
 
 // Login User:
 export const login =
@@ -98,7 +105,11 @@ export const login =
     const body = JSON.stringify({ email, password });
 
     try {
-      const res = await axios.post("gamestore/api/auth/auth", body, config);
+      const res = await axios.post(
+        `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/auth/auth`,
+        body,
+        config
+      );
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,

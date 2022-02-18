@@ -32,7 +32,7 @@ export const addToCart =
     const body = JSON.stringify({ gameid, title, price, poster, userid });
     try {
       const res = await axios.post(
-        "http://localhost:3000/gamestore/api/cart/addtocart",
+        `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/cart/addtocart`,
         body,
         config
       );
@@ -74,8 +74,9 @@ export const getFromCart =
       };
       axios.defaults.headers.common["userid"] = userid.toString();
       try {
+        console.log(process.env.REACT_APP_CLIENT_URI);
         const res = await axios.get(
-          "http://localhost:3000/gamestore/api/cart/getfromcart",
+          `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/cart/getfromcart`,
           config
         );
         if (res.data.items.length !== 0) {
@@ -104,7 +105,7 @@ export const removeFromCart =
     const body = JSON.stringify({ gkeyid });
     try {
       await axios.post(
-        "http://localhost:3000/gamestore/api/cart/remfromcart",
+        `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/cart/remfromcart`,
         body,
         config
       );
@@ -131,7 +132,7 @@ export const buyFromCart =
     const body = JSON.stringify({ gkeyid });
     try {
       const res = await axios.post(
-        "http://localhost:3000/gamestore/api/cart/buyfromcart",
+        `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/cart/buyfromcart`,
         body,
         config
       );

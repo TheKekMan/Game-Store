@@ -45,7 +45,9 @@ const Games = (props: any) => {
     <Spinner />
   ) : (
     <Fragment>
-      {games.results.rows && games.results.rows.length > 0 ? (
+      {games.results.rows &&
+      games.results.rows.length > 0 &&
+      games.results.rows[0] ? (
         <>
           <div className="games-list">
             {PageGames.map((game: { game_id: React.Key }, index) => (

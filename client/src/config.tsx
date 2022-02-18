@@ -1,1 +1,1 @@
-export const BASE_URL = 'gamestore/api'
+export const BASE_URL = "gamestore/api";

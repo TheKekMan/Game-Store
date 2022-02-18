@@ -15,7 +15,9 @@ export const getUser = () => async (dispatch: Dispatch<any>) => {
     setAuthToken(localStorage.token);
   }
   try {
-    const res = await axios.get("http://localhost:3000/gamestore/api/user");
+    const res = await axios.get(
+      `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/user`
+    );
     dispatch({
       type: GET_USER,
       payload: res.data,
@@ -31,7 +33,6 @@ export const getUser = () => async (dispatch: Dispatch<any>) => {
 };
 
 export const setUser = (newUserInfo: userInfo) => (dispatch: Dispatch<any>) => {
-  console.log("click");
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }

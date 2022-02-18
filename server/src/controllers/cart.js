@@ -1,10 +1,13 @@
-const pool = require("../db/");
+const pool = require("../db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const CryptoJS = require("crypto-js");
 const dotenv = require("dotenv");
+const path = require("path");
 
-dotenv.config();
+dotenv.config({
+  path: path.join(__dirname, "../../") + ".env",
+});
 
 function randomKeyGenerator() {
   const letters = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -98,9 +101,8 @@ const getFromCart = async (req, res) => {
           ).toString(CryptoJS.enc.Utf8))
         : (item.value = null)
     );
-    const decryptCodes = item;
-    const items = decryptCodes.rows;
-    if (item.rowCount == 0) {
+    const items = item.rows;
+    if (item.rowCount === 0) {
       return res.status(402).json({ message: "No games" });
     }
     return res.status(200).json({ items });

@@ -1,10 +1,7 @@
-const pool = require("../db/");
+const pool = require("../db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const CryptoJS = require("crypto-js");
-const dotenv = require("dotenv");
-
-dotenv.config();
 
 /**
  * Login user

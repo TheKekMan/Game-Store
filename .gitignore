@@ -2,7 +2,9 @@ node_modules
 .DS_Store
 dist
 .env
+build
 .idea/
 credentials.csv
 test_data.sql
 __snapshots__
+.vercel
