@@ -29,6 +29,7 @@ const Footer = () => {
         position: "relative",
         bottom: "0",
       }}
+      className={"footer"}
     >
       <Typography>
         Created by{" "}

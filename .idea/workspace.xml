@@ -4,9 +4,8 @@
     <list default="true" id="33ce80e4-3b70-4a0a-a0ec-dbb0bf2c11ed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/webpack.prod.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/webpack.prod.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/vercel.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/vercel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/Games.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/Games.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +122,7 @@
       <workItem from="1644819145038" duration="5136000" />
       <workItem from="1645093015673" duration="3864000" />
       <workItem from="1645164316217" duration="15236000" />
-      <workItem from="1645424083917" duration="409000" />
+      <workItem from="1645424083917" duration="3085000" />
     </task>
     <servers />
   </component>

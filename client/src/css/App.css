@@ -25,6 +25,7 @@ body {
   line-height: 1.6;
   background-color: var(--dark-color);
   color: var(--light-color);
+  transition: all 0.5s;
 }
 
 p {
@@ -347,6 +348,7 @@ button {
   top: 0;
   border-bottom: solid 1px var(--primary-color);
   opacity: 0.9;
+  transition: all 0.5s;
 }
 
 .navbar .home-link {
@@ -384,6 +386,10 @@ button {
   padding: 0 0.3rem;
   border-radius: 50%;
   background-color: var(--primary-color);
+}
+
+.footer {
+  transition: all 0.5s;
 }
 
 /* Mobile Styles */
