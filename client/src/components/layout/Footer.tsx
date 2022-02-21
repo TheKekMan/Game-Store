@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { Link } from "react-router-dom";
 import {
   Container,
   GitHubIcon,
   IconButton,
+  Link,
   TwitterIcon,
   Typography,
   YouTubeIcon,
@@ -33,7 +33,8 @@ const Footer = () => {
       <Typography>
         Created by{" "}
         <Link
-          to={"https://github.com/TheKekMan/"}
+          sx={{ color: "text.primary" }}
+          href={"https://github.com/TheKekMan/"}
           target={"_blank"}
           style={{ textDecoration: "underline" }}
         >
