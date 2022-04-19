@@ -41,8 +41,6 @@ const loginUser = async (req, res) => {
       },
     };
 
-    consle.log(userid.rows[0].user_id);
-
     // Sign the JWT token (*)
     jwt.sign(
       payload,
@@ -56,9 +54,8 @@ const loginUser = async (req, res) => {
         res.json({ token });
       }
     );
-
-    return res.status(200).json(resp);
   } catch (err) {
+    console.log(err);
     return res.status(500).json({
       message: "There was an error while logging in. Please try again later",
     });
@@ -173,7 +170,6 @@ const changePassword = async (req, res) => {
       loggedUserId,
       newHashedPassword,
     ]);
-    return res.status(200).json({ message: "Password updated successfully" });
   } catch (err) {
     return res
       .status(500)

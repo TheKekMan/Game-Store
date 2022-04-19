@@ -106,7 +106,7 @@ export const login =
 
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/auth/auth`,
+        `${process.env.REACT_APP_CLIENT_URI}/gamestore/api/auth/login`,
         body,
         config
       );
