@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="33ce80e4-3b70-4a0a-a0ec-dbb0bf2c11ed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/css/Games.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/Games.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/actions/auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/lib/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/lib/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/lib/controllers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/lib/controllers/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/controllers/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/controllers/auth.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,19 +32,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="16.13.1" />
-    <property name="javascript.nodejs.core.library.typings.version" value="16.11.25" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/client/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/client/node_modules/typescript/lib" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/user/Documents/Game-Store/client/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client/src" />
@@ -57,21 +54,14 @@
     <configuration name="index.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Game-Store/client/dist/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Game-Store/client/build/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="build (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/client/package.json" />
       <command value="run" />
       <scripts>
         <script value="build" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="start (1)" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/server/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -100,10 +90,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.webpack" />
-        <item itemvalue="npm.start" />
-        <item itemvalue="npm.start (1)" />
         <item itemvalue="JavaScript Debug.index.html (1)" />
-        <item itemvalue="npm.build" />
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="npm.build (1)" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -122,7 +112,25 @@
       <workItem from="1644819145038" duration="5136000" />
       <workItem from="1645093015673" duration="3864000" />
       <workItem from="1645164316217" duration="15236000" />
-      <workItem from="1645424083917" duration="3085000" />
+      <workItem from="1645424083917" duration="5922000" />
+      <workItem from="1645532093317" duration="660000" />
+      <workItem from="1646473705535" duration="373000" />
+      <workItem from="1646474191024" duration="14000" />
+      <workItem from="1646983391486" duration="101000" />
+      <workItem from="1647603026275" duration="3291000" />
+      <workItem from="1647873752622" duration="804000" />
+      <workItem from="1647874649987" duration="229000" />
+      <workItem from="1647931952729" duration="19000" />
+      <workItem from="1647932260879" duration="631000" />
+      <workItem from="1648034135003" duration="603000" />
+      <workItem from="1649143093962" duration="300000" />
+      <workItem from="1649144969834" duration="8000" />
+      <workItem from="1649160819132" duration="39000" />
+      <workItem from="1649682859884" duration="3986000" />
+      <workItem from="1649748164625" duration="3685000" />
+      <workItem from="1649767603535" duration="5000" />
+      <workItem from="1649943780000" duration="401000" />
+      <workItem from="1650262121037" duration="10017000" />
     </task>
     <servers />
   </component>
